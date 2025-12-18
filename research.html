@@ -2,23 +2,134 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Research | Shaotian Sun</title>
+    <title>Research Blog | Shaotian Sun</title>
     <link rel="stylesheet" href="https://latex.vercel.app/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Georgia", serif;
+        background-color: #fdfdf6;
+        color: #1e2f23;
+        margin: 2rem auto;
+        max-width: 900px;
+        padding: 1rem;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+
+      details {
+        border: 1px solid #cdded4;
+        border-radius: 12px;
+        background: #f9fcfa;
+        margin-bottom: 1.75rem;
+        overflow: hidden;
+      }
+
+      summary {
+        list-style: none;
+        cursor: pointer;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .preview {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 1.25rem;
+        padding: 1.25rem;
+        align-items: center;
+      }
+
+      .preview img {
+        width: 100%;
+        border-radius: 10px;
+        border: 2px solid #0b3d2e;
+        object-fit: cover;
+      }
+
+      .caption h2 {
+        margin: 0;
+        font-size: 1.3rem;
+      }
+
+      .caption p {
+        margin: 0.4rem 0 0;
+        color: #555;
+        font-size: 0.95rem;
+      }
+
+      .caption .meta {
+        margin-top: 0.4rem;
+        font-size: 0.85rem;
+        color: #777;
+      }
+
+      .content {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+        border-top: 1px dashed #cdded4;
+      }
+
+      .tags span {
+        display: inline-block;
+        background: #eef5f0;
+        border: 1px solid #cdded4;
+        border-radius: 999px;
+        padding: 0.2rem 0.7rem;
+        font-size: 0.8rem;
+        margin-right: 0.4rem;
+      }
+
+      a.back {
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body>
-    <h1>Research & Reading</h1>
-    <a href="index.html">← Back to Home</a>
+    <div class="header">
+      <h1><i class="fa-solid fa-layer-group"></i> Research Blog</h1>
+      <a class="back" href="index.html">← Home</a>
+    </div>
 
     <p>
       My primary general interests are in algebra and its interactions with
       number theory, representation theory, and geometry. I also find
       combinatorics and theoretical computer science interesting.
     </p>
+    <!-- Blog Entry Template -->
+    <details>
+      <summary>
+        <div class="preview">
+          <img src="research-preview.jpg" alt="Preview image" />
+          <div class="caption">
+            <h2>Post Title</h2>
+            <p>Short caption describing the focus of this entry.</p>
+            <div class="meta">Date · Category</div>
+          </div>
+        </div>
+      </summary>
 
-    <h2>Current Reading</h2>
-    <ul>
-      <li>Fulton & Harris, <i>Representation Theory</i></li>
-    </ul>
-    <h2>More on construction...</h2>
+      <div class="content">
+        <p>
+          Full blog content goes here. This section remains hidden until the
+          preview is expanded. It can include longer exposition, definitions,
+          questions, or structured notes.
+        </p>
+
+        <div class="tags">
+          <span>Tag</span>
+          <span>Tag</span>
+        </div>
+      </div>
+    </details>
   </body>
 </html>
