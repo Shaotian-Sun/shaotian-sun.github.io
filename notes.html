@@ -1,112 +1,228 @@
-<!DOCTYPE html>
-<body>
-<head>
+<!doctype html>
+<html lang="en">
+  <head>
     <meta charset="UTF-8" />
     <title>Notes | Shaotian Sun</title>
-<link rel="stylesheet" href="https://latex.vercel.app/style.css" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
-<style>
-  body {
-    font-family: "Georgia", serif;
-    background-color: #fdfdf6;
-    color: #1e2f23;
-    margin: 2rem auto;
-    max-width: 900px;
-    padding: 1rem;
-  }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  a.back {
-    font-weight: bold;
-  }
-</style>
-</head>
-<body>
-<div class="header">
-  <h1><i class="fa-solid fa-book"></i> Umich Mathematical Notes</h1>
-  <a class="back" href="index.html">← Home</a>
-</div>
 
-      <section>
-        <h2>Fall 2024</h2>
-        <ul>
-          <li>
-            <a
-              href="https://github.com/Shaotian-Sun/math-notes/tree/main/math451"
-              >Analysis of a Single Variable</a
-            >
-            <i>(MATH451, Advanced Calculus I)</i>
-          </li>
-          <li>
-            <a
-              href="https://github.com/Shaotian-Sun/math-notes/tree/main/math493"
-              >Group Theory, Representation Theory of Crystallographic Group,
-              and Representation Theory of Finite Group</a
-            >
-            <i>(MATH493, Honors Algebra I)</i>
-          </li>
-          <li>
-            <a
-              href="https://ghseeli.github.io/teaching/2024/08/27/math-565.html"
-              >Graph Theory, and Combinatorial Geometry</a
-            >
-            <i>(MATH565, Combinatorics and Graph Theory)</i>
-          </li>
-        </ul>
-      </section>
+    <link rel="stylesheet" href="https://latex.vercel.app/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
-      <section>
-        <h2>Winter 2025</h2>
-        <ul>
-          <li>
-            <a
-              href="https://github.com/Shaotian-Sun/math-notes/tree/main/math494"
-              >Ring, Module, Field, and Galois Theory</a
-            >
-            <i>(MATH494, Honors Algebra II)</i>
-          </li>
-          <li>
-            <a
-              href="https://github.com/Shaotian-Sun/math-notes/tree/main/math525"
-              >Graduate Probability Theory</a
-            >
-            <i>(MATH525, Probability Theory)</i>
-          </li>
-        </ul>
-      </section>
+    <style>
+      :root {
+        --ink: #1e2f23;
+        --muted: #5a6b63;
+        --accent: #0b3d2e;
+        --paper: #fdfdf8;
+        --card: #f7fbf9;
+        --line: #cdded4;
+        --shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+      }
 
-      <section>
-        <h2>Fall 2025</h2>
-        <ul>
-          <li>
-            <a
-              href="https://github.com/Shaotian-Sun/math-notes/tree/main/math395"
-              >Multivariable Analysis and Manifold</a
-            >
-            <i>(MATH395, Honors Analysis I)</i>
-          </li>
-          <li>
-            <a
-              href="https://github.com/Shaotian-Sun/math-notes/tree/main/math596"
-              >Graduate Complex Analysis (Ph.D. alpha course)</a
-            >
-            <i>(MATH596, Analysis I)</i>
-          </li>
-          <li>
-            <a
-              href="https://github.com/Shaotian-Sun/math-notes/tree/main/math614"
-              >Commutative Algebra (Ph.D. beta course)</a
-            >
-            <i>(MATH614, Commutative Algebra)</i>
-          </li>
-        </ul>
-      </section>
+      body {
+        font-family: "Georgia", serif;
+        background: var(--paper);
+        color: var(--ink);
+        margin: 0 auto;
+        max-width: 900px;
+        padding: 2.2rem 1.2rem 3rem;
+        line-height: 1.65;
+      }
+
+      /* Header */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .header h1 {
+        margin: 0;
+        color: var(--accent);
+      }
+
+      a.back {
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+        white-space: nowrap;
+        position: relative;
+      }
+
+      a.back::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 0;
+        height: 1px;
+        background: var(--accent);
+        transition: width 0.25s ease;
+      }
+
+      a.back:hover::after {
+        width: 100%;
+      }
+
+      /* Sections */
+      section {
+        margin: 1.2rem 0;
+        padding: 1.1rem 1.2rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+      }
+
+      section h2 {
+        margin: 0 0 0.85rem;
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-size: 1.25rem;
+      }
+
+      section h2::before {
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent);
+        opacity: 0.85;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 1.1rem;
+      }
+
+      li {
+        margin: 0.65rem 0;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      i {
+        color: var(--muted);
+      }
+
+      /* Make course info align nicely */
+      .course {
+        display: block;
+        margin-top: 0.15rem;
+        font-style: italic;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 640px) {
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.6rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1><i class="fa-solid fa-book"></i> Umich Mathematical Notes</h1>
+      <a class="back" href="index.html">← Home</a>
     </div>
+
+    <section>
+      <h2>Fall 2024</h2>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/Shaotian-Sun/math-notes/tree/main/math451"
+          >
+            Analysis of a Single Variable
+          </a>
+          <span class="course">(MATH451, Advanced Calculus I)</span>
+        </li>
+        <li>
+          <a
+            href="https://github.com/Shaotian-Sun/math-notes/tree/main/math493"
+          >
+            Group Theory, Representation Theory of Crystallographic Group, and
+            Representation Theory of Finite Group
+          </a>
+          <span class="course">(MATH493, Honors Algebra I)</span>
+        </li>
+        <li>
+          <a href="https://ghseeli.github.io/teaching/2024/08/27/math-565.html">
+            Graph Theory, and Combinatorial Geometry
+          </a>
+          <span class="course">(MATH565, Combinatorics and Graph Theory)</span>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Winter 2025</h2>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/Shaotian-Sun/math-notes/tree/main/math494"
+          >
+            Ring, Module, Field, and Galois Theory
+          </a>
+          <span class="course">(MATH494, Honors Algebra II)</span>
+        </li>
+        <li>
+          <a
+            href="https://github.com/Shaotian-Sun/math-notes/tree/main/math525"
+          >
+            Graduate Probability Theory
+          </a>
+          <span class="course">(MATH525, Probability Theory)</span>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Fall 2025</h2>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/Shaotian-Sun/math-notes/tree/main/math395"
+          >
+            Multivariable Analysis and Manifold
+          </a>
+          <span class="course">(MATH395, Honors Analysis I)</span>
+        </li>
+        <li>
+          <a
+            href="https://github.com/Shaotian-Sun/math-notes/tree/main/math596"
+          >
+            Graduate Complex Analysis (Ph.D. alpha course)
+          </a>
+          <span class="course">(MATH596, Analysis I)</span>
+        </li>
+        <li>
+          <a
+            href="https://github.com/Shaotian-Sun/math-notes/tree/main/math614"
+          >
+            Commutative Algebra (Ph.D. beta course)
+          </a>
+          <span class="course">(MATH614, Commutative Algebra)</span>
+        </li>
+      </ul>
+    </section>
   </body>
+</html>

@@ -3,118 +3,250 @@
   <head>
     <meta charset="UTF-8" />
     <title>Research/Reading Blog | Shaotian Sun</title>
+
     <link rel="stylesheet" href="https://latex.vercel.app/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+
     <style>
-      body {
-        font-family: "Georgia", serif;
-        background-color: #fdfdf6;
-        color: #1e2f23;
-        margin: 2rem auto;
-        max-width: 900px;
-        padding: 1rem;
+      :root {
+        --ink: #1e2f23;
+        --muted: #5a6b63;
+        --accent: #0b3d2e;
+        --paper: #fdfdf8;
+        --card: #f7fbf9;
+        --line: #cdded4;
+        --shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
       }
 
+      body {
+        font-family: "Georgia", serif;
+        background: var(--paper);
+        color: var(--ink);
+        margin: 0 auto;
+        max-width: 900px;
+        padding: 2.2rem 1.2rem 3rem;
+        line-height: 1.65;
+      }
+
+      /* Header */
       .header {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
       }
 
-      details {
-        border: 1px solid #cdded4;
-        border-radius: 12px;
-        background: #f9fcfa;
-        margin-bottom: 1.75rem;
+      .header h1 {
+        margin: 0;
+        color: var(--accent);
+      }
+
+      a.back {
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+        white-space: nowrap;
+        position: relative;
+      }
+
+      a.back::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 0;
+        height: 1px;
+        background: var(--accent);
+        transition: width 0.25s ease;
+      }
+
+      a.back:hover::after {
+        width: 100%;
+      }
+
+      .intro {
+        color: var(--muted);
+        margin: 0 0 1.6rem;
+      }
+
+      .intro p {
+        margin: 0.35rem 0;
+      }
+
+      /* Cards */
+      details.post {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card);
+        margin: 1.2rem 0;
         overflow: hidden;
+        box-shadow: var(--shadow);
       }
 
-      summary {
+      /* Make summary clickable but clean */
+      details.post > summary {
         list-style: none;
         cursor: pointer;
+        user-select: none;
+        padding: 1.15rem 1.15rem;
       }
 
-      summary::-webkit-details-marker {
+      details.post > summary::-webkit-details-marker {
         display: none;
+      }
+
+      /* Chevron indicator */
+      details.post > summary {
+        position: relative;
+        padding-right: 3rem;
+      }
+
+      details.post > summary::after {
+        content: "\f078"; /* fa-chevron-down */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        right: 1.2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--muted);
+        transition:
+          transform 0.2s ease,
+          color 0.2s ease;
+      }
+
+      details.post[open] > summary::after {
+        transform: translateY(-50%) rotate(180deg);
+        color: var(--accent);
       }
 
       .preview {
         display: grid;
-        grid-template-columns: 160px 1fr;
+        grid-template-columns: 170px 1fr;
         gap: 1.25rem;
-        padding: 1.25rem;
         align-items: center;
       }
 
       .preview img {
         width: 100%;
-        border-radius: 10px;
-        border: 2px solid #0b3d2e;
+        height: 110px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
         object-fit: cover;
+        background: #fff;
       }
 
       .caption h2 {
         margin: 0;
-        font-size: 1.3rem;
+        font-size: 1.25rem;
+        color: var(--accent);
       }
 
       .caption p {
-        margin: 0.4rem 0 0;
-        color: #555;
-        font-size: 0.95rem;
+        margin: 0.4rem 0 0.1rem;
+        color: var(--muted);
+        font-size: 0.98rem;
       }
 
       .caption .meta {
-        margin-top: 0.4rem;
-        font-size: 0.85rem;
-        color: #777;
+        margin-top: 0.45rem;
+        font-size: 0.86rem;
+        color: #6b7c74;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.12rem 0.55rem;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: #ffffffb8;
+        color: #476157;
+        font-size: 0.78rem;
       }
 
       .content {
-        padding: 0 1.5rem 1.5rem 1.5rem;
-        border-top: 1px dashed #cdded4;
+        padding: 0 1.25rem 1.25rem;
+        border-top: 1px solid rgba(205, 222, 212, 0.8);
+      }
+
+      .content p {
+        margin: 0.8rem 0;
+      }
+
+      .content a {
+        color: var(--accent);
+      }
+
+      .tags {
+        margin-top: 0.9rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
       }
 
       .tags span {
         display: inline-block;
-        background: #eef5f0;
-        border: 1px solid #cdded4;
+        background: #eef6f2;
+        border: 1px solid var(--line);
         border-radius: 999px;
-        padding: 0.2rem 0.7rem;
-        font-size: 0.8rem;
-        margin-right: 0.4rem;
+        padding: 0.22rem 0.75rem;
+        font-size: 0.82rem;
+        color: #3b564b;
       }
 
-      a.back {
-        font-weight: bold;
+      /* Responsive */
+      @media (max-width: 640px) {
+        .preview {
+          grid-template-columns: 1fr;
+        }
+        .preview img {
+          height: 160px;
+        }
       }
     </style>
   </head>
+
   <body>
     <div class="header">
       <h1><i class="fa-solid fa-layer-group"></i> Research/Reading Blog</h1>
       <a class="back" href="index.html">← Home</a>
     </div>
 
-    <p>
-      Primary interests: Algebra, Number Theory, Representation Theory, and
-      Algebraic Geometry.
-    </p>
-    <p>Other interests: Combinatorics, and Theoretical Computer Science.</p>
+    <div class="intro">
+      <p>
+        Primary interests: Algebra, Number Theory, Representation Theory, and
+        Algebraic Geometry.
+      </p>
+      <p>Other interests: Combinatorics, and Theoretical Computer Science.</p>
+    </div>
 
-    <!-- Represntation Blog -->
-    <details>
+    <!-- Representation Blog -->
+    <details class="post">
       <summary>
         <div class="preview">
-          <img src="image/Rep Thy.png" alt="Preview image" />
+          <img src="image/Rep Thy.png" alt="Representation theory preview" />
           <div class="caption">
             <h2>Representation Theory Reading</h2>
-            <p>Read <i> Representation Theory: A First Course </i>.</p>
-            <div class="meta">Fall 2025 - Winter 2026 · Reading</div>
+            <p>Read <i>Representation Theory: A First Course</i>.</p>
+            <div class="meta">
+              <span class="pill"
+                ><i class="fa-regular fa-calendar"></i> Fall 2025 – Winter
+                2026</span
+              >
+              <span class="pill"
+                ><i class="fa-regular fa-bookmark"></i> Reading</span
+              >
+            </div>
           </div>
         </div>
       </summary>
@@ -129,31 +261,39 @@
         </p>
 
         <div class="tags">
-          <span>Representation Theory</span> <span>Lie Group</span>
+          <span>Representation Theory</span>
+          <span>Lie Group</span>
           <span>Lie Algebra</span>
         </div>
       </div>
     </details>
 
     <!-- Tito Blog -->
-    <details>
+    <details class="post">
       <summary>
         <div class="preview">
-          <img src="image/hasse_diagram.png" alt="Preview image" />
+          <img src="image/hasse_diagram.png" alt="TITO preview" />
           <div class="caption">
             <h2>TITOgraphy: When Order Takes Shape</h2>
             <p>
               Design and implement an algorithm to compare
               translational-invariant total order (TITO).
             </p>
-            <div class="meta">Fall 2025 · Research</div>
+            <div class="meta">
+              <span class="pill"
+                ><i class="fa-regular fa-calendar"></i> Fall 2025</span
+              >
+              <span class="pill"
+                ><i class="fa-solid fa-flask"></i> Research</span
+              >
+            </div>
           </div>
         </div>
       </summary>
 
       <div class="content">
         <p>
-          Final Report can be downloaded
+          Final report can be downloaded
           <a href="files/LOG_(M_)_Final_Report-TITO_When_Order_Takes_Shape.pdf"
             >here</a
           >.
@@ -166,24 +306,34 @@
     </details>
 
     <!-- DRP Blog -->
-    <details>
+    <details class="post">
       <summary>
         <div class="preview">
-          <img src="image/number-theory.png" alt="Preview image" />
+          <img src="image/number-theory.png" alt="Number theory preview" />
           <div class="caption">
             <h2>Algebraic Number Theory Reading</h2>
-            <p>Read Chapter 1-4 of <i> Number Field </i>.</p>
-            <div class="meta">Summer 2025 · Reading</div>
+            <p>Read Chapter 1–4 of <i>Number Fields</i>.</p>
+            <div class="meta">
+              <span class="pill"
+                ><i class="fa-regular fa-calendar"></i> Summer 2025</span
+              >
+              <span class="pill"
+                ><i class="fa-regular fa-bookmark"></i> Reading</span
+              >
+            </div>
           </div>
         </div>
       </summary>
 
       <div class="content">
         <p>
-          Final Presentation can be accessed through <a href="cv.html">CV</a>.
+          Final presentation can be accessed through <a href="cv.html">CV</a>.
         </p>
 
-        <div class="tags"><span>Number Theory</span> <span>Algebra</span></div>
+        <div class="tags">
+          <span>Number Theory</span>
+          <span>Algebra</span>
+        </div>
       </div>
     </details>
   </body>
