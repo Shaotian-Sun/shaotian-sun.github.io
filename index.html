@@ -105,7 +105,18 @@
 
   <body>
     <h1>Shaotian Sun</h1>
-    <div class="updated">Last updated: December 17, 2025</div>
+    <div class="updated">Last updated: <span id="last-updated"></span></div>
+
+    <script>
+      const el = document.getElementById("last-updated");
+      const date = new Date(document.lastModified);
+
+      el.textContent = date.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    </script>
 
     <div class="nav">
       <a href="notes.html"><i class="fa-solid fa-book"></i> Notes</a>
