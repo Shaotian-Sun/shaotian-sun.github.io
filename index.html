@@ -2,10 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Shaotian Sun</title>
 
-    <!-- LaTeX.css -->
-    <link rel="stylesheet" href="site.css" />
+    <!-- LaTeX.css (optional) -->
+    <link rel="stylesheet" href="https://latex.vercel.app/style.css" />
 
     <!-- Icons -->
     <link
@@ -13,136 +14,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
 
-    <style>
-      body {
-        font-family: "Georgia", serif;
-        background: #fdfdf8;
-        color: #1e2f23;
-        margin: 0 auto;
-        max-width: 780px;
-        padding: 2.2rem 1.2rem 3rem;
-        line-height: 1.6;
-      }
-
-      h1 {
-        text-align: center;
-        margin-bottom: 0.2rem;
-        color: #0b3d2e;
-      }
-
-      .updated {
-        text-align: center;
-        font-size: 0.9rem;
-        color: #5a6b63;
-        margin-bottom: 2rem;
-      }
-
-      .nav {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-bottom: 2.2rem;
-        font-size: 1.05rem;
-      }
-
-      .nav a {
-        color: #0b3d2e;
-        text-decoration: none;
-        position: relative;
-      }
-
-      .nav a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -3px;
-        width: 0;
-        height: 1px;
-        background: #0b3d2e;
-        transition: width 0.25s ease;
-      }
-
-      .nav a:hover::after {
-        width: 100%;
-      }
-
-      p {
-        margin-bottom: 1.2rem;
-      }
-
-      .contact {
-        margin: 2rem 0 1.6rem;
-        padding: 0.9rem 1.2rem;
-        border-left: 3px solid #0b3d2e;
-        background: #f4f8f6;
-        border-radius: 6px;
-        width: fit-content;
-      }
-
-      .contact a {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        text-decoration: none;
-        color: #0b3d2e;
-        font-size: 0.95rem;
-      }
-
-      .contact a + a {
-        margin-top: 4px;
-      }
-
-      .contact a:hover {
-        text-decoration: underline;
-      }
-
-      .footer-note {
-        margin-top: 2rem;
-        font-style: italic;
-      }
-    </style>
+    <!-- Shared site theme -->
+    <link rel="stylesheet" href="site.css" />
   </head>
 
   <body>
-    <h1>Shaotian Sun</h1>
-    <div class="updated">Last updated: <span id="last-updated"></span></div>
-
-    <script>
-      const el = document.getElementById("last-updated");
-      const date = new Date(document.lastModified);
-
-      el.textContent = date.toLocaleDateString(undefined, {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
-    </script>
-
-    <div class="nav">
-      <a href="notes.html"><i class="fa-solid fa-book"></i> Notes</a>
-      <a href="research.html"><i class="fa-solid fa-flask"></i> Research</a>
-      <a href="cv.html"><i class="fa-solid fa-file-lines"></i> CV</a>
-    </div>
-
-    <p>
-      I'm double majoring in <strong>Honors Mathematics</strong> at the
-      University of Michigan, Ann Arbor and
-      <strong>Electrical &amp; Computer Engineering</strong> at Shanghai Jiao
-      Tong University. This website collects my Michigan mathematics notes,
-      research and reading materials, and curriculum vitae.
-    </p>
-
-    <div class="contact">
-      <a href="https://github.com/Shaotian-Sun" target="_blank">
-        <i class="fab fa-github"></i> github.com/Shaotian-Sun
-      </a>
-      <a href="mailto:shaotian@umich.edu">
-        <i class="fas fa-envelope"></i> shaotian@umich.edu
-      </a>
-    </div>
-
-    <p class="footer-note">
-      I'm applying to Ph.D. programs in Mathematics in Fall 2026.
-    </p>
+    <div id="app"></div>
+    <script defer src="app.js"></script>
   </body>
 </html>

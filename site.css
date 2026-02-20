@@ -36,28 +36,32 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Unified header bar */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     gap: 1rem;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.1rem;
 }
 
 .header h1 {
     margin: 0;
 }
 
-a.back {
-    font-weight: 600;
-    color: var(--accent);
-    text-decoration: none;
-    white-space: nowrap;
-    position: relative;
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    margin: 0.8rem 0 2rem;
+    font-size: 1.05rem;
 }
 
-a.back::after {
+.nav a {
+    position: relative;
+    text-decoration: none;
+}
+
+.nav a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -68,11 +72,18 @@ a.back::after {
     transition: width 0.25s ease;
 }
 
-a.back:hover::after {
+.nav a:hover::after,
+.nav a.active::after {
     width: 100%;
 }
 
-/* Card primitives */
+.updated {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0.2rem 0 1.8rem;
+}
+
 .card {
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
@@ -84,7 +95,6 @@ a.back:hover::after {
     padding: 1.2rem 1.3rem;
 }
 
-/* Pills/tags */
 .pill {
     display: inline-flex;
     align-items: center;
@@ -114,19 +124,15 @@ a.back:hover::after {
     color: #3b564b;
 }
 
-/* Updated line */
-.updated {
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--muted);
-    margin: 0.2rem 0 1.8rem;
-}
-
-/* Responsive */
 @media (max-width: 640px) {
     .header {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.6rem;
+    }
+
+    .nav {
+        justify-content: flex-start;
+        flex-wrap: wrap;
     }
 }
