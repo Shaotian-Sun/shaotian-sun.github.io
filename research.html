@@ -5,108 +5,41 @@
     <title>Research/Reading Blog | Shaotian Sun</title>
 
     <link rel="stylesheet" href="https://latex.vercel.app/style.css" />
+    <link rel="stylesheet" href="site.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
 
     <style>
-      :root {
-        --ink: #1e2f23;
-        --muted: #5a6b63;
-        --accent: #0b3d2e;
-        --paper: #fdfdf8;
-        --card: #f7fbf9;
-        --line: #cdded4;
-        --shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-      }
-
-      body {
-        font-family: "Georgia", serif;
-        background: var(--paper);
-        color: var(--ink);
-        margin: 0 auto;
-        max-width: 900px;
-        padding: 2.2rem 1.2rem 3rem;
-        line-height: 1.65;
-      }
-
-      /* Header */
-      .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        gap: 1rem;
-        margin-bottom: 1.25rem;
-      }
-
-      .header h1 {
-        margin: 0;
-        color: var(--accent);
-      }
-
-      a.back {
-        font-weight: 600;
-        color: var(--accent);
-        text-decoration: none;
-        white-space: nowrap;
-        position: relative;
-      }
-
-      a.back::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -3px;
-        width: 0;
-        height: 1px;
-        background: var(--accent);
-        transition: width 0.25s ease;
-      }
-
-      a.back:hover::after {
-        width: 100%;
-      }
-
       .intro {
         color: var(--muted);
         margin: 0 0 1.6rem;
       }
-
       .intro p {
         margin: 0.35rem 0;
       }
 
-      /* Cards */
       details.post {
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: var(--card);
         margin: 1.2rem 0;
         overflow: hidden;
-        box-shadow: var(--shadow);
       }
 
-      /* Make summary clickable but clean */
       details.post > summary {
         list-style: none;
         cursor: pointer;
         user-select: none;
         padding: 1.15rem 1.15rem;
+        position: relative;
+        padding-right: 3rem;
       }
 
       details.post > summary::-webkit-details-marker {
         display: none;
       }
 
-      /* Chevron indicator */
-      details.post > summary {
-        position: relative;
-        padding-right: 3rem;
-      }
-
       details.post > summary::after {
-        content: "\f078"; /* fa-chevron-down */
+        content: "\f078";
         font-family: "Font Awesome 6 Free";
         font-weight: 900;
         position: absolute;
@@ -152,65 +85,29 @@
         font-size: 0.98rem;
       }
 
-      .caption .meta {
+      .meta-row {
         margin-top: 0.45rem;
-        font-size: 0.86rem;
-        color: #6b7c74;
         display: flex;
         align-items: center;
         gap: 0.5rem;
         flex-wrap: wrap;
       }
 
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.12rem 0.55rem;
-        border-radius: 999px;
-        border: 1px solid var(--line);
-        background: #ffffffb8;
-        color: #476157;
-        font-size: 0.78rem;
-      }
-
       .content {
         padding: 0 1.25rem 1.25rem;
-        border-top: 1px solid rgba(205, 222, 212, 0.8);
+        border-top: 1px solid rgba(205, 222, 212, 0.85);
       }
 
       .content p {
         margin: 0.8rem 0;
       }
 
-      .content a {
-        color: var(--accent);
-      }
-
-      .tags {
-        margin-top: 0.9rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.45rem;
-      }
-
-      .tags span {
-        display: inline-block;
-        background: #eef6f2;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        padding: 0.22rem 0.75rem;
-        font-size: 0.82rem;
-        color: #3b564b;
-      }
-
-      /* Responsive */
       @media (max-width: 640px) {
         .preview {
           grid-template-columns: 1fr;
         }
         .preview img {
-          height: 160px;
+          height: 170px;
         }
       }
     </style>
@@ -231,14 +128,14 @@
     </div>
 
     <!-- Representation Blog -->
-    <details class="post">
+    <details class="post card">
       <summary>
         <div class="preview">
           <img src="image/Rep Thy.png" alt="Representation theory preview" />
           <div class="caption">
             <h2>Representation Theory Reading</h2>
             <p>Read <i>Representation Theory: A First Course</i>.</p>
-            <div class="meta">
+            <div class="meta-row">
               <span class="pill"
                 ><i class="fa-regular fa-calendar"></i> Fall 2025 – Winter
                 2026</span
@@ -269,7 +166,7 @@
     </details>
 
     <!-- Tito Blog -->
-    <details class="post">
+    <details class="post card">
       <summary>
         <div class="preview">
           <img src="image/hasse_diagram.png" alt="TITO preview" />
@@ -279,7 +176,7 @@
               Design and implement an algorithm to compare
               translational-invariant total order (TITO).
             </p>
-            <div class="meta">
+            <div class="meta-row">
               <span class="pill"
                 ><i class="fa-regular fa-calendar"></i> Fall 2025</span
               >
@@ -306,14 +203,14 @@
     </details>
 
     <!-- DRP Blog -->
-    <details class="post">
+    <details class="post card">
       <summary>
         <div class="preview">
           <img src="image/number-theory.png" alt="Number theory preview" />
           <div class="caption">
             <h2>Algebraic Number Theory Reading</h2>
             <p>Read Chapter 1–4 of <i>Number Fields</i>.</p>
-            <div class="meta">
+            <div class="meta-row">
               <span class="pill"
                 ><i class="fa-regular fa-calendar"></i> Summer 2025</span
               >

@@ -1,0 +1,132 @@
+:root {
+    --ink: #1e2f23;
+    --muted: #5a6b63;
+    --accent: #0b3d2e;
+
+    --paper: #fdfdf8;
+    --card: #f7fbf9;
+    --line: #cdded4;
+    --shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+
+    --radius: 14px;
+    --radius-lg: 16px;
+}
+
+body {
+    font-family: "Georgia", serif;
+    background: var(--paper);
+    color: var(--ink);
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 2.2rem 1.2rem 3rem;
+    line-height: 1.65;
+}
+
+h1,
+h2 {
+    color: var(--accent);
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Unified header bar */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+a.back {
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+}
+
+a.back::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.25s ease;
+}
+
+a.back:hover::after {
+    width: 100%;
+}
+
+/* Card primitives */
+.card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    box-shadow: var(--shadow);
+}
+
+.card-pad {
+    padding: 1.2rem 1.3rem;
+}
+
+/* Pills/tags */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.12rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #ffffffb8;
+    color: #476157;
+    font-size: 0.78rem;
+}
+
+.tags {
+    margin-top: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.tags span {
+    display: inline-block;
+    background: #eef6f2;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.22rem 0.75rem;
+    font-size: 0.82rem;
+    color: #3b564b;
+}
+
+/* Updated line */
+.updated {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0.2rem 0 1.8rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+    }
+}
