@@ -93,7 +93,7 @@ function renderHome() {
         </div>
 
         <p style="margin-top:1.6rem; font-style:italic;">
-          I'm applying to Ph.D. programs in Mathematics in Fall 2026.
+          I plan to apply for Ph.D. programs for Fall 2027 intake.
         </p>
       `,
     })}
