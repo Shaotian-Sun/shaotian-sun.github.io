@@ -1,4 +1,4 @@
-// --- Tiny client-side router (hash-based, GitHub Pages friendly) ---
+// Hash-based router for GitHub Pages.
 const routes = {
   home: renderHome,
   notes: renderNotes,
@@ -29,6 +29,126 @@ const routeMeta = {
   },
 };
 
+const noteTerms = [
+  {
+    term: "Fall 2024",
+    items: [
+      {
+        href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math451",
+        text: "Analysis of a Single Variable",
+        course: "MATH451, Advanced Calculus I",
+        tags: ["analysis"],
+      },
+      {
+        href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math493",
+        text:
+          "Group Theory, Representation Theory of Crystallographic Group, " +
+          "and Representation Theory of Finite Group",
+        course: "MATH493, Honors Algebra I",
+        tags: ["algebra", "representation"],
+      },
+      {
+        href: "https://ghseeli.github.io/teaching/2024/08/27/math-565.html",
+        text: "Graph Theory, and Combinatorial Geometry",
+        course: "MATH565, Combinatorics and Graph Theory",
+        tags: ["combinatorics"],
+      },
+    ],
+  },
+  {
+    term: "Winter 2025",
+    items: [
+      {
+        href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math494",
+        text: "Ring, Module, Field, and Galois Theory",
+        course: "MATH494, Honors Algebra II",
+        tags: ["algebra"],
+      },
+      {
+        href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math525",
+        text: "Graduate Probability Theory",
+        course: "MATH525, Probability Theory",
+        tags: ["probability"],
+      },
+    ],
+  },
+  {
+    term: "Fall 2025",
+    items: [
+      {
+        href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math395",
+        text: "Multivariable Analysis and Manifold",
+        course: "MATH395, Honors Analysis I",
+        tags: ["analysis", "geometry"],
+      },
+      {
+        href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math596",
+        text: "Graduate Complex Analysis",
+        course: "MATH596, Analysis I, Ph.D. alpha course",
+        tags: ["analysis"],
+      },
+      {
+        href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math614",
+        text: "Commutative Algebra",
+        course: "MATH614, Ph.D. beta course",
+        tags: ["algebra", "geometry"],
+      },
+    ],
+  },
+];
+
+const researchPosts = [
+  {
+    img: "image/Rep Thy.png",
+    alt: "Representation theory preview",
+    title: "Representation Theory Reading",
+    desc: "Reading Representation Theory: A First Course, currently around Chapter 11.",
+    metaLeft: "Fall 2025 - Winter 2026",
+    metaRight: "Reading",
+    category: "representation",
+    body: `
+      <p>
+        The current reading note can be accessed
+        <a href="files/Independent_Reading__Representation_Theory_Notes.pdf">here</a>.
+      </p>
+      <div class="tags">
+        <span>Representation Theory</span><span>Lie Group</span><span>Lie Algebra</span>
+      </div>
+    `,
+  },
+  {
+    img: "image/hasse_diagram.png",
+    alt: "TITO preview",
+    title: "TITOgraphy: When Order Takes Shape",
+    desc: "An algorithmic project comparing translational-invariant total orders.",
+    metaLeft: "Fall 2025",
+    metaRight: "Research",
+    category: "combinatorics",
+    body: `
+      <p>
+        Final report can be downloaded
+        <a href="files/LOG_(M_)_Final_Report-TITO_When_Order_Takes_Shape.pdf">here</a>.
+      </p>
+      <div class="tags"><span>Combinatorics</span><span>Algorithms</span></div>
+    `,
+  },
+  {
+    img: "image/number-theory.png",
+    alt: "Number theory preview",
+    title: "Algebraic Number Theory Reading",
+    desc: "A reading project on Chapters 1-4 of Number Fields.",
+    metaLeft: "Summer 2025",
+    metaRight: "Reading",
+    category: "number",
+    body: `
+      <p>Final presentation can be accessed through <a href="#/cv">CV</a>.</p>
+      <div class="tags"><span>Number Theory</span><span>Algebra</span></div>
+    `,
+  },
+];
+
+let canvasCleanup = null;
+
 function currentRoute() {
   const hash = (location.hash || "#/home").replace(/^#\/?/, "");
   return routes[hash] ? hash : "home";
@@ -49,8 +169,8 @@ function layout({ contentHtml }) {
   document.title = `${meta.title} | Shaotian Sun`;
 
   return `
-    <div class="ambient" aria-hidden="true">
-      <span></span><span></span><span></span>
+    <div class="site-backdrop" aria-hidden="true">
+      <canvas data-field-canvas></canvas>
     </div>
 
     <header class="site-header">
@@ -80,8 +200,11 @@ function layout({ contentHtml }) {
           <p class="eyebrow"><i class="${meta.iconClass}"></i> ${meta.eyebrow}</p>
           <h1>${meta.title}</h1>
         </div>
-        <div class="hero-orbit" aria-hidden="true">
-          <span>Alg</span><span>Rep</span><span>NT</span>
+        <div class="hero-panel" data-spotlight>
+          <span class="formula">Gal(L/K)</span>
+          <span class="formula">Spec R</span>
+          <span class="formula">Ext<sup>1</sup>(V,W)</span>
+          <span class="formula">zeta<sub>K</sub>(s)</span>
         </div>
       </section>
 
@@ -99,6 +222,11 @@ function navLink(route, icon, label, activeRoute) {
 }
 
 function render() {
+  if (canvasCleanup) {
+    canvasCleanup();
+    canvasCleanup = null;
+  }
+
   const route = currentRoute();
   const app = document.getElementById("app");
   app.innerHTML = routes[route]();
@@ -114,18 +242,32 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function initializeInteractions() {
-  const toggle = document.querySelector("[data-theme-toggle]");
-  if (toggle) {
-    updateThemeIcon(toggle);
+  initializeThemeToggle();
+  initializeReveal();
+  initializeTilt();
+  initializeSpotlight();
+  initializeEmailCopy();
+  initializeCanvas();
+  initializeFilters();
+}
 
-    toggle.addEventListener("click", () => {
-      const nextTheme =
-        document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-      document.documentElement.dataset.theme = nextTheme;
-      localStorage.setItem("theme", nextTheme);
-      updateThemeIcon(toggle);
-    });
-  }
+function initializeThemeToggle() {
+  const toggle = document.querySelector("[data-theme-toggle]");
+  if (!toggle) return;
+
+  updateThemeIcon(toggle);
+  toggle.addEventListener("click", () => {
+    const nextTheme =
+      document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+    localStorage.setItem("theme", nextTheme);
+    updateThemeIcon(toggle);
+  });
+}
+
+function initializeReveal() {
+  const targets = document.querySelectorAll(".reveal");
+  if (!targets.length) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -138,20 +280,36 @@ function initializeInteractions() {
     },
     { threshold: 0.12 },
   );
-  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  targets.forEach((el) => observer.observe(el));
+}
 
+function initializeTilt() {
   document.querySelectorAll("[data-tilt]").forEach((card) => {
     card.addEventListener("pointermove", (event) => {
       const rect = card.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 8;
-      const y = ((event.clientY - rect.top) / rect.height - 0.5) * -8;
-      card.style.transform = `perspective(900px) rotateX(${y}deg) rotateY(${x}deg) translateY(-3px)`;
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 7;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * -7;
+      card.style.transform = `perspective(900px) rotateX(${y}deg) rotateY(${x}deg) translateY(-2px)`;
     });
     card.addEventListener("pointerleave", () => {
       card.style.transform = "";
     });
   });
+}
 
+function initializeSpotlight() {
+  document.querySelectorAll("[data-spotlight]").forEach((el) => {
+    el.addEventListener("pointermove", (event) => {
+      const rect = el.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      el.style.setProperty("--spotlight-x", `${x}%`);
+      el.style.setProperty("--spotlight-y", `${y}%`);
+    });
+  });
+}
+
+function initializeEmailCopy() {
   document.querySelectorAll("[data-copy-email]").forEach((button) => {
     button.addEventListener("click", async () => {
       if (navigator.clipboard) {
@@ -167,6 +325,135 @@ function initializeInteractions() {
   });
 }
 
+function initializeCanvas() {
+  const canvas = document.querySelector("[data-field-canvas]");
+  if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const context = canvas.getContext("2d");
+  if (!context) return;
+  const pointer = { x: 0, y: 0, active: false };
+  const symbols = ["sum", "pi", "lambda", "phi", "R", "Z", "G", "V"];
+  let particles = [];
+  let width = 0;
+  let height = 0;
+  let animationFrame = 0;
+
+  function resize() {
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.floor(width * ratio);
+    canvas.height = Math.floor(height * ratio);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    particles = Array.from({ length: Math.min(54, Math.floor(width / 20)) }, (_, i) => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.24,
+      vy: (Math.random() - 0.5) * 0.24,
+      symbol: symbols[i % symbols.length],
+      size: 12 + Math.random() * 10,
+    }));
+  }
+
+  function draw() {
+    const accent = getComputedStyle(document.documentElement)
+      .getPropertyValue("--accent")
+      .trim();
+    const muted = getComputedStyle(document.documentElement)
+      .getPropertyValue("--muted")
+      .trim();
+
+    context.clearRect(0, 0, width, height);
+    context.globalAlpha = 0.22;
+    context.strokeStyle = accent;
+    context.lineWidth = 1;
+
+    particles.forEach((particle, index) => {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+
+      if (particle.x < -20) particle.x = width + 20;
+      if (particle.x > width + 20) particle.x = -20;
+      if (particle.y < -20) particle.y = height + 20;
+      if (particle.y > height + 20) particle.y = -20;
+
+      if (pointer.active) {
+        const dx = particle.x - pointer.x;
+        const dy = particle.y - pointer.y;
+        const distance = Math.hypot(dx, dy);
+        if (distance < 150 && distance > 0) {
+          particle.x += (dx / distance) * 0.55;
+          particle.y += (dy / distance) * 0.55;
+        }
+      }
+
+      for (let j = index + 1; j < particles.length; j += 1) {
+        const other = particles[j];
+        const distance = Math.hypot(particle.x - other.x, particle.y - other.y);
+        if (distance < 130) {
+          context.globalAlpha = (1 - distance / 130) * 0.16;
+          context.beginPath();
+          context.moveTo(particle.x, particle.y);
+          context.lineTo(other.x, other.y);
+          context.stroke();
+        }
+      }
+
+      context.globalAlpha = 0.24;
+      context.fillStyle = muted;
+      context.font = `${particle.size}px Georgia, serif`;
+      context.fillText(particle.symbol, particle.x, particle.y);
+    });
+
+    animationFrame = requestAnimationFrame(draw);
+  }
+
+  function handlePointerMove(event) {
+    pointer.x = event.clientX;
+    pointer.y = event.clientY;
+    pointer.active = true;
+  }
+
+  function handlePointerLeave() {
+    pointer.active = false;
+  }
+
+  window.addEventListener("resize", resize);
+  window.addEventListener("pointermove", handlePointerMove);
+  window.addEventListener("pointerleave", handlePointerLeave);
+
+  resize();
+  draw();
+
+  canvasCleanup = () => {
+    cancelAnimationFrame(animationFrame);
+    window.removeEventListener("resize", resize);
+    window.removeEventListener("pointermove", handlePointerMove);
+    window.removeEventListener("pointerleave", handlePointerLeave);
+  };
+}
+
+function initializeFilters() {
+  document.querySelectorAll("[data-filter-group]").forEach((group) => {
+    const controls = group.querySelectorAll("[data-filter]");
+    const targets = document.querySelectorAll(group.dataset.filterGroup);
+
+    controls.forEach((control) => {
+      control.addEventListener("click", () => {
+        const filter = control.dataset.filter;
+        controls.forEach((button) => button.classList.toggle("active", button === control));
+        targets.forEach((target) => {
+          const values = (target.dataset.filterValue || "").split(" ");
+          const show = filter === "all" || values.includes(filter);
+          target.hidden = !show;
+        });
+      });
+    });
+  });
+}
+
 function updateThemeIcon(toggle) {
   const currentTheme = document.documentElement.dataset.theme || "light";
   toggle.innerHTML =
@@ -175,7 +462,6 @@ function updateThemeIcon(toggle) {
       : '<i class="fa-solid fa-moon"></i>';
 }
 
-// --- Pages ---
 function renderHome() {
   const updated = formatLastModified();
   return layout({
@@ -204,10 +490,11 @@ function renderHome() {
         </article>
 
         <aside class="contact-panel reveal" data-tilt>
-          <div class="matrix-card" aria-hidden="true">
-            <span>x^2 + y^2</span>
-            <span>Gal(L/K)</span>
-            <span>Spec R</span>
+          <div class="focus-board" data-spotlight>
+            <span>Algebra</span>
+            <span>Representation</span>
+            <span>Number Theory</span>
+            <span>Combinatorics</span>
           </div>
           <div class="contact-list">
             <a href="https://github.com/Shaotian-Sun" target="_blank" rel="noreferrer">
@@ -229,6 +516,23 @@ function renderHome() {
         ${statCard("2027", "Planned Ph.D. application cycle", "fa-solid fa-graduation-cap")}
       </section>
 
+      <section class="feature-strip reveal">
+        <a href="#/research">
+          <i class="fa-solid fa-cube"></i>
+          <span>
+            <strong>Current focus</strong>
+            <small>Representation theory, algebraic number theory, and ordered structures</small>
+          </span>
+        </a>
+        <a href="#/notes">
+          <i class="fa-solid fa-pen-nib"></i>
+          <span>
+            <strong>Working archive</strong>
+            <small>Course notes organized by term and subject</small>
+          </span>
+        </a>
+      </section>
+
       <p class="updated reveal">Last updated: ${updated}</p>
     `,
   });
@@ -247,63 +551,22 @@ function statCard(number, label, icon) {
 function renderNotes() {
   return layout({
     contentHtml: `
+      <div class="filter-bar reveal" data-filter-group=".note-card">
+        ${filterButton("all", "All", true)}
+        ${filterButton("algebra", "Algebra")}
+        ${filterButton("analysis", "Analysis")}
+        ${filterButton("geometry", "Geometry")}
+        ${filterButton("combinatorics", "Combinatorics")}
+      </div>
       <section class="note-timeline reveal">
-        ${notesSection("Fall 2024", [
-          {
-            href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math451",
-            text: "Analysis of a Single Variable",
-            course: "MATH451, Advanced Calculus I",
-          },
-          {
-            href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math493",
-            text:
-              "Group Theory, Representation Theory of Crystallographic Group, " +
-              "and Representation Theory of Finite Group",
-            course: "MATH493, Honors Algebra I",
-          },
-          {
-            href: "https://ghseeli.github.io/teaching/2024/08/27/math-565.html",
-            text: "Graph Theory, and Combinatorial Geometry",
-            course: "MATH565, Combinatorics and Graph Theory",
-          },
-        ])}
-
-        ${notesSection("Winter 2025", [
-          {
-            href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math494",
-            text: "Ring, Module, Field, and Galois Theory",
-            course: "MATH494, Honors Algebra II",
-          },
-          {
-            href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math525",
-            text: "Graduate Probability Theory",
-            course: "MATH525, Probability Theory",
-          },
-        ])}
-
-        ${notesSection("Fall 2025", [
-          {
-            href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math395",
-            text: "Multivariable Analysis and Manifold",
-            course: "MATH395, Honors Analysis I",
-          },
-          {
-            href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math596",
-            text: "Graduate Complex Analysis",
-            course: "MATH596, Analysis I, Ph.D. alpha course",
-          },
-          {
-            href: "https://github.com/Shaotian-Sun/math-notes/tree/main/math614",
-            text: "Commutative Algebra",
-            course: "MATH614, Ph.D. beta course",
-          },
-        ])}
+        ${noteTerms.map((term) => notesSection(term.term, term.items)).join("")}
       </section>
     `,
   });
 }
 
 function notesSection(title, items) {
+  const values = new Set(items.flatMap((item) => item.tags));
   const li = items
     .map(
       (x) => `
@@ -318,7 +581,7 @@ function notesSection(title, items) {
     .join("");
 
   return `
-    <article class="note-card" data-tilt>
+    <article class="note-card" data-tilt data-filter-value="${Array.from(values).join(" ")}">
       <h2>${title}</h2>
       <ul>${li}</ul>
     </article>
@@ -328,6 +591,13 @@ function notesSection(title, items) {
 function renderResearch() {
   return layout({
     contentHtml: `
+      <div class="filter-bar reveal" data-filter-group=".post-card">
+        ${filterButton("all", "All", true)}
+        ${filterButton("representation", "Representation")}
+        ${filterButton("combinatorics", "Combinatorics")}
+        ${filterButton("number", "Number Theory")}
+      </div>
+
       <section class="interest-strip reveal">
         <span>Algebra</span>
         <span>Number Theory</span>
@@ -338,60 +608,23 @@ function renderResearch() {
       </section>
 
       <section class="research-list">
-        ${postCard({
-          img: "image/Rep Thy.png",
-          alt: "Representation theory preview",
-          title: "Representation Theory Reading",
-          desc: "Reading Representation Theory: A First Course, currently around Chapter 11.",
-          metaLeft: "Fall 2025 - Winter 2026",
-          metaRight: "Reading",
-          body: `
-            <p>
-              The current reading note can be accessed
-              <a href="files/Independent_Reading__Representation_Theory_Notes.pdf">here</a>.
-            </p>
-            <div class="tags">
-              <span>Representation Theory</span><span>Lie Group</span><span>Lie Algebra</span>
-            </div>
-          `,
-        })}
-
-        ${postCard({
-          img: "image/hasse_diagram.png",
-          alt: "TITO preview",
-          title: "TITOgraphy: When Order Takes Shape",
-          desc: "An algorithmic project comparing translational-invariant total orders.",
-          metaLeft: "Fall 2025",
-          metaRight: "Research",
-          body: `
-            <p>
-              Final report can be downloaded
-              <a href="files/LOG_(M_)_Final_Report-TITO_When_Order_Takes_Shape.pdf">here</a>.
-            </p>
-            <div class="tags"><span>Combinatorics</span></div>
-          `,
-        })}
-
-        ${postCard({
-          img: "image/number-theory.png",
-          alt: "Number theory preview",
-          title: "Algebraic Number Theory Reading",
-          desc: "A reading project on Chapters 1-4 of Number Fields.",
-          metaLeft: "Summer 2025",
-          metaRight: "Reading",
-          body: `
-            <p>Final presentation can be accessed through <a href="#/cv">CV</a>.</p>
-            <div class="tags"><span>Number Theory</span><span>Algebra</span></div>
-          `,
-        })}
+        ${researchPosts.map(postCard).join("")}
       </section>
     `,
   });
 }
 
-function postCard({ img, alt, title, desc, metaLeft, metaRight, body }) {
+function filterButton(value, label, active = false) {
   return `
-    <details class="post-card reveal">
+    <button class="${active ? "active" : ""}" type="button" data-filter="${value}">
+      ${label}
+    </button>
+  `;
+}
+
+function postCard({ img, alt, title, desc, metaLeft, metaRight, category, body }) {
+  return `
+    <details class="post-card reveal" data-filter-value="${category}">
       <summary>
         <img src="${img}" alt="${alt}" />
         <span class="post-copy">
