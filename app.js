@@ -147,6 +147,90 @@ const researchPosts = [
   },
 ];
 
+const teachingTimeline = [
+  {
+    term: "Fall 2023",
+    role: "Teaching Assistant",
+    place: "ENGL1000J",
+    icon: "fa-solid fa-chalkboard-user",
+  },
+  {
+    term: "Spring 2024",
+    role: "Teaching Assistant",
+    place: "TC3000J",
+    icon: "fa-solid fa-chalkboard-user",
+  },
+  {
+    term: "Summer 2024",
+    role: "Teaching Assistant",
+    place: "TC3000J",
+    icon: "fa-solid fa-chalkboard-user",
+  },
+  {
+    term: "Winter 2025",
+    role: "Grader",
+    place: "MATH217",
+    icon: "fa-solid fa-square-root-variable",
+  },
+  {
+    term: "Summer 2025",
+    role: "Community Assistant",
+    place: "Math Corps",
+    icon: "fa-solid fa-people-group",
+  },
+  {
+    term: "Fall 2025",
+    role: "Grader",
+    place: "MATH525",
+    icon: "fa-solid fa-chart-line",
+  },
+  {
+    term: "Winter 2026",
+    role: "Course Assistant",
+    place: "MATH201",
+    icon: "fa-solid fa-person-chalkboard",
+  },
+  {
+    term: "Winter 2026",
+    role: "Kiluk Tutor",
+    place: "MATH217",
+    icon: "fa-solid fa-user-group",
+  },
+];
+
+const researchTimeline = [
+  {
+    term: "Summer 2025",
+    role: "Directed Reading Program",
+    place: "Algebraic Number Theory",
+    icon: "fa-solid fa-book-open-reader",
+  },
+  {
+    term: "Fall 2025 - Winter 2026",
+    role: "Directed Reading",
+    place: "Representation Theory, advised by Prof. Griffin Wang",
+    icon: "fa-solid fa-cubes",
+  },
+  {
+    term: "Fall 2025 - Winter 2026",
+    role: "Lab of Geometry",
+    place: "Python package for translational-invariant total order operations",
+    icon: "fa-brands fa-python",
+  },
+  {
+    term: "In progress",
+    role: "REU",
+    place: "Research project in progress",
+    icon: "fa-solid fa-flask",
+  },
+  {
+    term: "In progress",
+    role: "Statistics Research",
+    place: "Research project in progress",
+    icon: "fa-solid fa-chart-simple",
+  },
+];
+
 let canvasCleanup = null;
 
 function currentRoute() {
@@ -511,9 +595,9 @@ function renderHome() {
       </section>
 
       <section class="quick-stats reveal" aria-label="Website highlights">
-        ${statCard("3", "Active reading/research threads", "fa-solid fa-diagram-project")}
+        ${statCard("5", "Research and reading threads", "fa-solid fa-diagram-project")}
         ${statCard("8", "Course note collections", "fa-solid fa-layer-group")}
-        ${statCard("2027", "Planned Ph.D. application cycle", "fa-solid fa-graduation-cap")}
+        ${statCard("8", "Teaching and support roles", "fa-solid fa-graduation-cap")}
       </section>
 
       <section class="feature-strip reveal">
@@ -533,6 +617,18 @@ function renderHome() {
         </a>
       </section>
 
+      <section class="timeline-section reveal" aria-labelledby="experience-timeline-title">
+        <div class="section-heading">
+          <p class="eyebrow"><i class="fa-solid fa-timeline"></i> Timeline</p>
+          <h2 id="experience-timeline-title">Teaching and research experience</h2>
+        </div>
+
+        <div class="timeline-grid">
+          ${timelineColumn("Teaching Experience", "fa-solid fa-person-chalkboard", teachingTimeline)}
+          ${timelineColumn("Research Line", "fa-solid fa-flask", researchTimeline)}
+        </div>
+      </section>
+
       <p class="updated reveal">Last updated: ${updated}</p>
     `,
   });
@@ -545,6 +641,30 @@ function statCard(number, label, icon) {
       <strong>${number}</strong>
       <span>${label}</span>
     </article>
+  `;
+}
+
+function timelineColumn(title, icon, items) {
+  return `
+    <article class="timeline-column">
+      <h3><i class="${icon}"></i>${title}</h3>
+      <ol class="experience-timeline">
+        ${items.map(timelineItem).join("")}
+      </ol>
+    </article>
+  `;
+}
+
+function timelineItem({ term, role, place, icon }) {
+  return `
+    <li>
+      <span class="timeline-node"><i class="${icon}"></i></span>
+      <div class="timeline-copy">
+        <time>${term}</time>
+        <strong>${role}</strong>
+        <span>${place}</span>
+      </div>
+    </li>
   `;
 }
 
