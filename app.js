@@ -231,6 +231,42 @@ const researchTimeline = [
   },
 ];
 
+const programmingProjects = [
+  {
+    title: "TITOgraphy",
+    type: "Research software",
+    icon: "fa-solid fa-diagram-project",
+    desc:
+      "A Python project for experimenting with translational-invariant total " +
+      "orders and visualizing how ordered structures behave under operations.",
+    tags: ["Python", "Algorithms", "Visualization"],
+    href: "#/research",
+    cta: "Read project report",
+  },
+  {
+    title: "Personal Academic Website",
+    type: "Web development",
+    icon: "fa-solid fa-window-restore",
+    desc:
+      "A responsive single-page portfolio for notes, research, teaching work, " +
+      "and CV materials, built for GitHub Pages with vanilla JavaScript.",
+    tags: ["JavaScript", "CSS", "GitHub Pages"],
+    href: "https://github.com/Shaotian-Sun/shaotian-sun.github.io",
+    cta: "View source",
+  },
+  {
+    title: "Mathematical Notes Archive",
+    type: "Technical writing system",
+    icon: "fa-solid fa-book-open-reader",
+    desc:
+      "A public archive that organizes course notes and reading materials by " +
+      "term, topic, and source for long-term mathematical reference.",
+    tags: ["LaTeX", "Documentation", "Organization"],
+    href: "https://github.com/Shaotian-Sun/math-notes",
+    cta: "Open archive",
+  },
+];
+
 let canvasCleanup = null;
 
 function currentRoute() {
@@ -285,10 +321,10 @@ function layout({ contentHtml }) {
           <h1>${meta.title}</h1>
         </div>
         <div class="hero-panel" data-spotlight>
-          <span class="formula">Gal(L/K)</span>
-          <span class="formula">Spec R</span>
-          <span class="formula">Ext<sup>1</sup>(V,W)</span>
-          <span class="formula">zeta<sub>K</sub>(s)</span>
+          <span class="formula">Probability</span>
+          <span class="formula">Statistics</span>
+          <span class="formula">Machine Learning</span>
+          <span class="formula">Algorithms</span>
         </div>
       </section>
 
@@ -327,6 +363,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function initializeInteractions() {
   initializeThemeToggle();
+  initializeLocalScroll();
   initializeReveal();
   initializeTilt();
   initializeSpotlight();
@@ -538,6 +575,17 @@ function initializeFilters() {
   });
 }
 
+function initializeLocalScroll() {
+  document.querySelectorAll("[data-scroll-target]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = document.getElementById(link.dataset.scrollTarget);
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
 function updateThemeIcon(toggle) {
   const currentTheme = document.documentElement.dataset.theme || "light";
   toggle.innerHTML =
@@ -570,6 +618,9 @@ function renderHome() {
             <a class="button" href="#/notes">
               <i class="fa-solid fa-book"></i><span>Browse notes</span>
             </a>
+            <a class="button" href="#/home" data-scroll-target="programming-projects">
+              <i class="fa-solid fa-code"></i><span>Projects</span>
+            </a>
           </div>
         </article>
 
@@ -592,6 +643,22 @@ function renderHome() {
             </button>
           </div>
         </aside>
+      </section>
+
+      <section class="projects-section reveal" id="programming-projects" aria-labelledby="programming-projects-title">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow"><i class="fa-solid fa-code"></i> Programming</p>
+            <h2 id="programming-projects-title">Programming projects</h2>
+          </div>
+          <a class="button" href="https://github.com/Shaotian-Sun" target="_blank" rel="noreferrer">
+            <i class="fab fa-github"></i><span>GitHub</span>
+          </a>
+        </div>
+
+        <div class="project-grid">
+          ${programmingProjects.map(projectCard).join("")}
+        </div>
       </section>
 
       <section class="timeline-section reveal" aria-labelledby="experience-timeline-title">
@@ -632,6 +699,24 @@ function renderHome() {
       <p class="updated reveal">Last updated: ${updated}</p>
     `,
   });
+}
+
+function projectCard({ title, type, icon, desc, tags, href, cta }) {
+  const external = href.startsWith("http");
+  return `
+    <article class="project-card" data-tilt>
+      <div class="project-icon"><i class="${icon}"></i></div>
+      <p>${type}</p>
+      <h3>${title}</h3>
+      <span>${desc}</span>
+      <div class="project-tags">
+        ${tags.map((tag) => `<small>${tag}</small>`).join("")}
+      </div>
+      <a href="${href}" ${external ? 'target="_blank" rel="noreferrer"' : ""}>
+        <span>${cta}</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    </article>
+  `;
 }
 
 function statCard(number, label, icon) {
