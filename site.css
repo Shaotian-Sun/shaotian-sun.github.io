@@ -394,6 +394,53 @@ img {
     max-width: 66ch;
 }
 
+.education-list {
+    position: relative;
+    display: grid;
+    gap: 10px;
+    margin: 20px 0 18px;
+    max-width: 720px;
+}
+
+.education-list > div {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    align-items: center;
+    gap: 12px;
+    min-height: 74px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--card) 72%, transparent);
+}
+
+.education-list i {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius);
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent), var(--blue));
+    box-shadow: var(--shadow-soft);
+}
+
+.education-list strong,
+.education-list small {
+    display: block;
+}
+
+.education-list strong {
+    color: var(--ink);
+    line-height: 1.25;
+}
+
+.education-list small {
+    margin-top: 3px;
+    color: var(--muted);
+    line-height: 1.35;
+}
+
 .cta-row,
 .contact-list {
     position: relative;

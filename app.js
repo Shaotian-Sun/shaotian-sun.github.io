@@ -601,11 +601,25 @@ function renderHome() {
       <section class="home-grid">
         <article class="intro-panel reveal">
           <p class="lede">
-            I am double majoring in <strong>Honors Mathematics</strong> at the
-            University of Michigan, Ann Arbor and in
-            <strong>Electrical &amp; Computer Engineering</strong> at Shanghai Jiao
-            Tong University.
+            I study <strong>probability</strong>, <strong>machine learning</strong>,
+            and mathematics across UMich and SJTU.
           </p>
+          <div class="education-list" aria-label="Education">
+            <div>
+              <i class="fa-solid fa-square-root-variable"></i>
+              <span>
+                <strong>B.S. in Mathematics</strong>
+                <small>In progress &middot; Probability &amp; Machine Learning &middot; University of Michigan</small>
+              </span>
+            </div>
+            <div>
+              <i class="fa-solid fa-microchip"></i>
+              <span>
+                <strong>B.Eng. in Electrical &amp; Computer Engineering</strong>
+                <small>Shanghai Jiao Tong University</small>
+              </span>
+            </div>
+          </div>
           <p>
             This website collects my UMich math notes, research and reading
             materials, and curriculum vitae. I plan to apply for Ph.D. programs
