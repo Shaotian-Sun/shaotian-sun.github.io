@@ -594,6 +594,18 @@ function renderHome() {
         </aside>
       </section>
 
+      <section class="timeline-section reveal" aria-labelledby="experience-timeline-title">
+        <div class="section-heading">
+          <p class="eyebrow"><i class="fa-solid fa-timeline"></i> Timeline</p>
+          <h2 id="experience-timeline-title">Teaching and research experience</h2>
+        </div>
+
+        <div class="timeline-grid">
+          ${timelineColumn("Teaching Experience", "fa-solid fa-person-chalkboard", teachingTimeline)}
+          ${timelineColumn("Research Line", "fa-solid fa-flask", researchTimeline)}
+        </div>
+      </section>
+
       <section class="quick-stats reveal" aria-label="Website highlights">
         ${statCard("5", "Research and reading threads", "fa-solid fa-diagram-project")}
         ${statCard("8", "Course note collections", "fa-solid fa-layer-group")}
@@ -615,18 +627,6 @@ function renderHome() {
             <small>Course notes organized by term and subject</small>
           </span>
         </a>
-      </section>
-
-      <section class="timeline-section reveal" aria-labelledby="experience-timeline-title">
-        <div class="section-heading">
-          <p class="eyebrow"><i class="fa-solid fa-timeline"></i> Timeline</p>
-          <h2 id="experience-timeline-title">Teaching and research experience</h2>
-        </div>
-
-        <div class="timeline-grid">
-          ${timelineColumn("Teaching Experience", "fa-solid fa-person-chalkboard", teachingTimeline)}
-          ${timelineColumn("Research Line", "fa-solid fa-flask", researchTimeline)}
-        </div>
       </section>
 
       <p class="updated reveal">Last updated: ${updated}</p>
