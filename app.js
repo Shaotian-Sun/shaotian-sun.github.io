@@ -149,6 +149,39 @@ const researchPosts = [
 
 const programmingProjects = [
   {
+    title: "Insta485 Web Application",
+    type: "Full-stack web systems",
+    icon: "fa-solid fa-camera-retro",
+    desc:
+      "A three-stage Instagram-style application developed from static site generation " +
+      "to Flask server-side rendering and React client-side interaction.",
+    tags: ["Flask", "React", "SQLite"],
+    href: "https://github.com/Shaotian-Sun",
+    cta: "View GitHub",
+  },
+  {
+    title: "Search Engine + Inverted Index",
+    type: "Information retrieval",
+    icon: "fa-solid fa-magnifying-glass-chart",
+    desc:
+      "A search system built around a segmented inverted index, TF-IDF cosine scoring, " +
+      "PageRank weighting, and Flask APIs for ranked document retrieval.",
+    tags: ["MapReduce", "TF-IDF", "PageRank"],
+    href: "https://github.com/Shaotian-Sun",
+    cta: "View GitHub",
+  },
+  {
+    title: "Distributed MapReduce Framework",
+    type: "Distributed systems",
+    icon: "fa-solid fa-network-wired",
+    desc:
+      "A Python manager-worker MapReduce runtime with task partitioning, worker " +
+      "coordination, fault-tolerance tests, and integration coverage.",
+    tags: ["Python", "Sockets", "Testing"],
+    href: "https://github.com/Shaotian-Sun",
+    cta: "View GitHub",
+  },
+  {
     title: "TITOgraphy",
     type: "Research software",
     icon: "fa-solid fa-diagram-project",
@@ -185,34 +218,48 @@ const programmingProjects = [
 
 const dataScienceProjects = [
   {
-    title: "Predictive Modeling Project",
-    type: "Template slot",
-    icon: "fa-solid fa-chart-line",
+    title: "Clinical Risk Prediction",
+    type: "EECS 445 Machine Learning",
+    icon: "fa-solid fa-heart-pulse",
     desc:
-      "Reserved for a supervised learning project with feature engineering, " +
-      "model comparison, validation, and business-facing interpretation.",
-    tags: ["Python", "scikit-learn", "Model Evaluation"],
-    cta: "Add report link",
+      "A supervised learning pipeline for ICU patient data: 48-hour feature extraction, " +
+      "missing-value imputation, normalization, cross-validation, and classifier tuning.",
+    tags: ["Python", "scikit-learn", "Cross-validation"],
+    href: "https://github.com/Shaotian-Sun",
+    cta: "View GitHub",
   },
   {
-    title: "Exploratory Data Analysis Report",
-    type: "Template slot",
-    icon: "fa-solid fa-magnifying-glass-chart",
+    title: "Dog Breed Image Classification",
+    type: "EECS 445 Computer Vision",
+    icon: "fa-solid fa-eye",
     desc:
-      "Reserved for a data report that turns raw data into clear insights " +
-      "through cleaning, visualization, statistical summaries, and narrative.",
-    tags: ["pandas", "Visualization", "Statistics"],
-    cta: "Add report link",
+      "A PyTorch vision project comparing CNNs, transfer learning, and a compact Vision " +
+      "Transformer with early stopping, checkpoints, training curves, and confusion matrices.",
+    tags: ["PyTorch", "CNN", "ViT"],
+    href: "https://github.com/Shaotian-Sun",
+    cta: "View GitHub",
   },
   {
-    title: "Current Data Science Project",
-    type: "In progress",
-    icon: "fa-solid fa-database",
+    title: "Unsupervised Learning Lab",
+    type: "EECS 445 Modeling",
+    icon: "fa-solid fa-circle-nodes",
     desc:
-      "A live slot for the project currently being built, with space for the " +
-      "dataset, pipeline, methods, results, and repository once available.",
-    tags: ["SQL", "ML Pipeline", "Git"],
-    cta: "Update status",
+      "Experiments with k-means, hierarchical clustering, Gaussian mixture models, " +
+      "model selection by BIC, and visual diagnostics for noisy and unbalanced data.",
+    tags: ["Clustering", "GMM", "Visualization"],
+    href: "https://github.com/Shaotian-Sun",
+    cta: "View GitHub",
+  },
+  {
+    title: "Neural Network Practice",
+    type: "EECS 445 Deep Learning",
+    icon: "fa-solid fa-brain",
+    desc:
+      "Course implementations covering neural network training, transformer components, " +
+      "autoencoders, regularization, denoising, evaluation curves, and checkpointed runs.",
+    tags: ["Deep Learning", "Transformers", "Autoencoders"],
+    href: "https://github.com/Shaotian-Sun",
+    cta: "View GitHub",
   },
 ];
 
@@ -621,10 +668,10 @@ function renderHome() {
         <div class="section-heading compact">
           <div>
             <p class="eyebrow"><i class="fa-solid fa-database"></i> Data Science</p>
-            <h2 id="data-projects-title">Data portfolio template</h2>
+            <h2 id="data-projects-title">Machine learning portfolio</h2>
           </div>
-          <span class="button">
-            <i class="fa-solid fa-paperclip"></i><span>Reports coming soon</span>
+          <span class="button" aria-label="Portfolio source material">
+            <i class="fa-solid fa-graduation-cap"></i><span>EECS 445 work</span>
           </span>
         </div>
 
@@ -650,9 +697,9 @@ function renderHome() {
       </section>
 
       <section class="quick-stats reveal" aria-label="Website highlights">
-        ${statCard("3", "Data portfolio slots ready for reports", "fa-solid fa-database")}
+        ${statCard("4", "Machine learning project areas", "fa-solid fa-database")}
         ${statCard("3", "Research and reading projects", "fa-solid fa-flask")}
-        ${statCard("8", "Course note collections", "fa-solid fa-layer-group")}
+        ${statCard("6", "Web systems and research software projects", "fa-solid fa-layer-group")}
       </section>
 
       <section class="feature-strip reveal">
