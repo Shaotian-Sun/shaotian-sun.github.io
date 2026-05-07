@@ -218,26 +218,26 @@ const programmingProjects = [
 
 const dataScienceProjects = [
   {
-    title: "Clinical Risk Prediction",
+    title: "ICU Mortality Risk Prediction",
     type: "EECS 445 Machine Learning",
     icon: "fa-solid fa-heart-pulse",
     desc:
-      "A supervised learning pipeline for ICU patient data: 48-hour feature extraction, " +
-      "missing-value imputation, normalization, cross-validation, and classifier tuning.",
-    tags: ["Python", "scikit-learn", "Cross-validation"],
-    href: "https://github.com/Shaotian-Sun",
-    cta: "View GitHub",
+      "A supervised learning study on ICU patient records with feature extraction, " +
+      "imputation, normalization, cross-validation, and model comparison for clinical risk.",
+    tags: ["Supervised Learning", "scikit-learn", "Model Selection"],
+    href: "EECS445_P1_Report.pdf",
+    cta: "Read report",
   },
   {
     title: "Dog Breed Image Classification",
     type: "EECS 445 Computer Vision",
     icon: "fa-solid fa-eye",
     desc:
-      "A PyTorch vision project comparing CNNs, transfer learning, and a compact Vision " +
-      "Transformer with early stopping, checkpoints, training curves, and confusion matrices.",
-    tags: ["PyTorch", "CNN", "ViT"],
-    href: "https://github.com/Shaotian-Sun",
-    cta: "View GitHub",
+      "A PyTorch image classification report comparing convolutional networks, transfer " +
+      "learning, and transformer-style vision models with training diagnostics.",
+    tags: ["PyTorch", "CNN", "Transfer Learning"],
+    href: "EECS445_P2_Report.pdf",
+    cta: "Read report",
   },
   {
     title: "Unsupervised Learning Lab",
