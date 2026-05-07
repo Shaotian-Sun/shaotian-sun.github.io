@@ -18,8 +18,8 @@ const routeMeta = {
     iconClass: "fa-solid fa-book-open",
   },
   research: {
-    title: "Research & Reading",
-    eyebrow: "Algebra, representation theory, number theory, and combinatorics",
+    title: "Research & Projects",
+    eyebrow: "Machine learning, probability, data analysis, and mathematical research",
     iconClass: "fa-solid fa-layer-group",
   },
   cv: {
@@ -151,49 +151,49 @@ const teachingTimeline = [
   {
     term: "Fall 2023",
     role: "Teaching Assistant",
-    place: "ENGL1000J",
+    place: "ENGL1000J, Academic Writing I",
     icon: "fa-solid fa-chalkboard-user",
   },
   {
     term: "Spring 2024",
     role: "Teaching Assistant",
-    place: "TC3000J",
+    place: "TC3000J, Technical Communication",
     icon: "fa-solid fa-chalkboard-user",
   },
   {
     term: "Summer 2024",
     role: "Teaching Assistant",
-    place: "TC3000J",
+    place: "TC3000J, Technical Communication",
     icon: "fa-solid fa-chalkboard-user",
   },
   {
     term: "Winter 2025",
     role: "Grader",
-    place: "MATH217",
+    place: "MATH217, Linear Algebra",
     icon: "fa-solid fa-square-root-variable",
   },
   {
     term: "Summer 2025",
     role: "Community Assistant",
-    place: "Math Corps",
+    place: "U(M) Math Corps",
     icon: "fa-solid fa-people-group",
   },
   {
     term: "Fall 2025",
     role: "Grader",
-    place: "MATH525",
+    place: "MATH525, Probability Theory",
     icon: "fa-solid fa-chart-line",
   },
   {
     term: "Winter 2026",
     role: "Course Assistant",
-    place: "MATH201",
+    place: "MATH201, Introduction to Mathematical Writing",
     icon: "fa-solid fa-person-chalkboard",
   },
   {
     term: "Winter 2026",
     role: "Kiluk Tutor",
-    place: "MATH217",
+    place: "MATH217, Linear Algebra",
     icon: "fa-solid fa-user-group",
   },
 ];
@@ -207,26 +207,27 @@ const researchTimeline = [
   },
   {
     term: "Fall 2025 - Winter 2026",
-    role: "Directed Reading",
+    role: "Directed Reading Course",
     place: "Representation Theory, advised by Prof. Griffin Wang",
     icon: "fa-solid fa-cubes",
   },
   {
     term: "Fall 2025 - Winter 2026",
     role: "Lab of Geometry",
-    place: "Python package for translational-invariant total order operations",
+    place:
+      "Python package for translational-invariant total order operations, advised by Prof. Grant Barkley",
     icon: "fa-brands fa-python",
   },
   {
     term: "In progress",
     role: "REU",
-    place: "Research project in progress",
+    place: "Research project in progress, advised by Prof. Jinho Baik",
     icon: "fa-solid fa-flask",
   },
   {
     term: "In progress",
-    role: "Statistics Research",
-    place: "Research project in progress",
+    role: "Machine Learning Research",
+    place: "Research project in progress, advised by Prof. Shubhanshu Shekhar",
     icon: "fa-solid fa-chart-simple",
   },
 ];
@@ -264,6 +265,39 @@ const programmingProjects = [
     tags: ["LaTeX", "Documentation", "Organization"],
     href: "https://github.com/Shaotian-Sun/math-notes",
     cta: "Open archive",
+  },
+];
+
+const dataScienceProjects = [
+  {
+    title: "Predictive Modeling Project",
+    type: "Template slot",
+    icon: "fa-solid fa-chart-line",
+    desc:
+      "Reserved for a supervised learning project with feature engineering, " +
+      "model comparison, validation, and business-facing interpretation.",
+    tags: ["Python", "scikit-learn", "Model Evaluation"],
+    cta: "Add report link",
+  },
+  {
+    title: "Exploratory Data Analysis Report",
+    type: "Template slot",
+    icon: "fa-solid fa-magnifying-glass-chart",
+    desc:
+      "Reserved for a data report that turns raw data into clear insights " +
+      "through cleaning, visualization, statistical summaries, and narrative.",
+    tags: ["pandas", "Visualization", "Statistics"],
+    cta: "Add report link",
+  },
+  {
+    title: "Current Data Science Project",
+    type: "In progress",
+    icon: "fa-solid fa-database",
+    desc:
+      "A live slot for the project currently being built, with space for the " +
+      "dataset, pipeline, methods, results, and repository once available.",
+    tags: ["SQL", "ML Pipeline", "Git"],
+    cta: "Update status",
   },
 ];
 
@@ -448,12 +482,13 @@ function initializeEmailCopy() {
 
 function initializeCanvas() {
   const canvas = document.querySelector("[data-field-canvas]");
-  if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+    return;
 
   const context = canvas.getContext("2d");
   if (!context) return;
   const pointer = { x: 0, y: 0, active: false };
-  const symbols = ["sum", "pi", "lambda", "phi", "R", "Z", "G", "V"];
+  const symbols = ["", "pi", "lambda", "phi", "R", "Z", "G", "V"];
   let particles = [];
   let width = 0;
   let height = 0;
@@ -468,14 +503,17 @@ function initializeCanvas() {
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
-    particles = Array.from({ length: Math.min(54, Math.floor(width / 20)) }, (_, i) => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.24,
-      vy: (Math.random() - 0.5) * 0.24,
-      symbol: symbols[i % symbols.length],
-      size: 12 + Math.random() * 10,
-    }));
+    particles = Array.from(
+      { length: Math.min(54, Math.floor(width / 20)) },
+      (_, i) => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.24,
+        vy: (Math.random() - 0.5) * 0.24,
+        symbol: symbols[i % symbols.length],
+        size: 12 + Math.random() * 10,
+      }),
+    );
   }
 
   function draw() {
@@ -564,7 +602,9 @@ function initializeFilters() {
     controls.forEach((control) => {
       control.addEventListener("click", () => {
         const filter = control.dataset.filter;
-        controls.forEach((button) => button.classList.toggle("active", button === control));
+        controls.forEach((button) =>
+          button.classList.toggle("active", button === control),
+        );
         targets.forEach((target) => {
           const values = (target.dataset.filterValue || "").split(" ");
           const show = filter === "all" || values.includes(filter);
@@ -621,9 +661,10 @@ function renderHome() {
             </div>
           </div>
           <p>
-            This website collects my UMich math notes, research and reading
-            materials, and curriculum vitae. I plan to apply for Ph.D. programs
-            for Fall 2027 intake.
+            This website collects my math notes, research and reading materials,
+            and a growing data portfolio. I am preparing for data scientist
+            internship roles while continuing research toward Fall 2027 Ph.D.
+            applications.
           </p>
           <div class="cta-row">
             <a class="button primary" href="#/research">
@@ -632,7 +673,7 @@ function renderHome() {
             <a class="button" href="#/notes">
               <i class="fa-solid fa-book"></i><span>Browse notes</span>
             </a>
-            <a class="button" href="#/home" data-scroll-target="programming-projects">
+            <a class="button" href="#/home" data-scroll-target="data-projects">
               <i class="fa-solid fa-code"></i><span>Projects</span>
             </a>
           </div>
@@ -640,10 +681,12 @@ function renderHome() {
 
         <aside class="contact-panel reveal" data-tilt>
           <div class="focus-board" data-spotlight>
-            <span>Algebra</span>
-            <span>Representation</span>
-            <span>Number Theory</span>
-            <span>Combinatorics</span>
+            <span>Python</span>
+            <span>SQL</span>
+            <span>Machine Learning</span>
+            <span>Statistics</span>
+            <span>Data Visualization</span>
+            <span>Model Evaluation</span>
           </div>
           <div class="contact-list">
             <a href="https://github.com/Shaotian-Sun" target="_blank" rel="noreferrer">
@@ -659,11 +702,27 @@ function renderHome() {
         </aside>
       </section>
 
+      <section class="projects-section reveal" id="data-projects" aria-labelledby="data-projects-title">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow"><i class="fa-solid fa-database"></i> Data Science</p>
+            <h2 id="data-projects-title">Data portfolio template</h2>
+          </div>
+          <span class="button">
+            <i class="fa-solid fa-paperclip"></i><span>Reports coming soon</span>
+          </span>
+        </div>
+
+        <div class="project-grid">
+          ${dataScienceProjects.map(projectCard).join("")}
+        </div>
+      </section>
+
       <section class="projects-section reveal" id="programming-projects" aria-labelledby="programming-projects-title">
         <div class="section-heading compact">
           <div>
             <p class="eyebrow"><i class="fa-solid fa-code"></i> Programming</p>
-            <h2 id="programming-projects-title">Programming projects</h2>
+            <h2 id="programming-projects-title">Selected technical projects</h2>
           </div>
           <a class="button" href="https://github.com/Shaotian-Sun" target="_blank" rel="noreferrer">
             <i class="fab fa-github"></i><span>GitHub</span>
@@ -688,7 +747,7 @@ function renderHome() {
       </section>
 
       <section class="quick-stats reveal" aria-label="Website highlights">
-        ${statCard("5", "Research and reading threads", "fa-solid fa-diagram-project")}
+        ${statCard("3", "Data portfolio slots ready for reports", "fa-solid fa-database")}
         ${statCard("8", "Course note collections", "fa-solid fa-layer-group")}
         ${statCard("8", "Teaching and support roles", "fa-solid fa-graduation-cap")}
       </section>
@@ -697,8 +756,8 @@ function renderHome() {
         <a href="#/research">
           <i class="fa-solid fa-cube"></i>
           <span>
-            <strong>Current focus</strong>
-            <small>Representation theory, algebraic number theory, and ordered structures</small>
+            <strong>Internship focus</strong>
+            <small>Data science projects, machine learning practice, and statistical modeling</small>
           </span>
         </a>
         <a href="#/notes">
@@ -716,7 +775,19 @@ function renderHome() {
 }
 
 function projectCard({ title, type, icon, desc, tags, href, cta }) {
-  const external = href.startsWith("http");
+  const external = href?.startsWith("http");
+  const action = href
+    ? `
+      <a href="${href}" ${external ? 'target="_blank" rel="noreferrer"' : ""}>
+        <span>${cta}</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    `
+    : `
+      <span class="project-action">
+        <span>${cta}</span><i class="fa-regular fa-clock"></i>
+      </span>
+    `;
+
   return `
     <article class="project-card" data-tilt>
       <div class="project-icon"><i class="${icon}"></i></div>
@@ -726,9 +797,7 @@ function projectCard({ title, type, icon, desc, tags, href, cta }) {
       <div class="project-tags">
         ${tags.map((tag) => `<small>${tag}</small>`).join("")}
       </div>
-      <a href="${href}" ${external ? 'target="_blank" rel="noreferrer"' : ""}>
-        <span>${cta}</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
-      </a>
+      ${action}
     </article>
   `;
 }
@@ -818,12 +887,12 @@ function renderResearch() {
       </div>
 
       <section class="interest-strip reveal">
-        <span>Algebra</span>
-        <span>Number Theory</span>
-        <span>Representation Theory</span>
-        <span>Algebraic Geometry</span>
-        <span>Combinatorics</span>
-        <span>Theoretical CS</span>
+        <span>Machine Learning</span>
+        <span>Probability</span>
+        <span>Statistics</span>
+        <span>Data Analysis</span>
+        <span>Algorithms</span>
+        <span>Mathematical Research</span>
       </section>
 
       <section class="research-list">
@@ -841,7 +910,16 @@ function filterButton(value, label, active = false) {
   `;
 }
 
-function postCard({ img, alt, title, desc, metaLeft, metaRight, category, body }) {
+function postCard({
+  img,
+  alt,
+  title,
+  desc,
+  metaLeft,
+  metaRight,
+  category,
+  body,
+}) {
   return `
     <details class="post-card reveal" data-filter-value="${category}">
       <summary>

@@ -650,7 +650,8 @@ img {
     font-weight: 760;
 }
 
-.project-card > a {
+.project-card > a,
+.project-action {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
@@ -662,7 +663,12 @@ img {
     font-weight: 800;
 }
 
-.project-card > a i {
+.project-action {
+    color: var(--muted);
+}
+
+.project-card > a i,
+.project-action i {
     font-size: 0.85rem;
 }
 
