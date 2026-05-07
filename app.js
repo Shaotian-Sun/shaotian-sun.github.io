@@ -14,12 +14,12 @@ const routeMeta = {
   },
   notes: {
     title: "Mathematical Notes",
-    eyebrow: "Course notes, reading notes, and working references",
+    eyebrow: "Mathematical references and course notes",
     iconClass: "fa-solid fa-book-open",
   },
   research: {
     title: "Research & Projects",
-    eyebrow: "Machine learning, probability, data analysis, and mathematical research",
+    eyebrow: "Research projects, reading reports, and mathematical work",
     iconClass: "fa-solid fa-layer-group",
   },
   cv: {
@@ -147,91 +147,6 @@ const researchPosts = [
   },
 ];
 
-const teachingTimeline = [
-  {
-    term: "Fall 2023",
-    role: "Teaching Assistant",
-    place: "ENGL1000J, Academic Writing I",
-    icon: "fa-solid fa-chalkboard-user",
-  },
-  {
-    term: "Spring 2024",
-    role: "Teaching Assistant",
-    place: "TC3000J, Technical Communication",
-    icon: "fa-solid fa-chalkboard-user",
-  },
-  {
-    term: "Summer 2024",
-    role: "Teaching Assistant",
-    place: "TC3000J, Technical Communication",
-    icon: "fa-solid fa-chalkboard-user",
-  },
-  {
-    term: "Winter 2025",
-    role: "Grader",
-    place: "MATH217, Linear Algebra",
-    icon: "fa-solid fa-square-root-variable",
-  },
-  {
-    term: "Summer 2025",
-    role: "Community Assistant",
-    place: "U(M) Math Corps",
-    icon: "fa-solid fa-people-group",
-  },
-  {
-    term: "Fall 2025",
-    role: "Grader",
-    place: "MATH525, Probability Theory",
-    icon: "fa-solid fa-chart-line",
-  },
-  {
-    term: "Winter 2026",
-    role: "Course Assistant",
-    place: "MATH201, Introduction to Mathematical Writing",
-    icon: "fa-solid fa-person-chalkboard",
-  },
-  {
-    term: "Winter 2026",
-    role: "Kiluk Tutor",
-    place: "MATH217, Linear Algebra",
-    icon: "fa-solid fa-user-group",
-  },
-];
-
-const researchTimeline = [
-  {
-    term: "Summer 2025",
-    role: "Directed Reading Program",
-    place: "Algebraic Number Theory",
-    icon: "fa-solid fa-book-open-reader",
-  },
-  {
-    term: "Fall 2025 - Winter 2026",
-    role: "Directed Reading Course",
-    place: "Representation Theory, advised by Prof. Griffin Wang",
-    icon: "fa-solid fa-cubes",
-  },
-  {
-    term: "Fall 2025 - Winter 2026",
-    role: "Lab of Geometry",
-    place:
-      "Python package for translational-invariant total order operations, advised by Prof. Grant Barkley",
-    icon: "fa-brands fa-python",
-  },
-  {
-    term: "In progress",
-    role: "REU",
-    place: "Research project in progress, advised by Prof. Jinho Baik",
-    icon: "fa-solid fa-flask",
-  },
-  {
-    term: "In progress",
-    role: "Machine Learning Research",
-    place: "Research project in progress, advised by Prof. Shubhanshu Shekhar",
-    icon: "fa-solid fa-chart-simple",
-  },
-];
-
 const programmingProjects = [
   {
     title: "TITOgraphy",
@@ -249,8 +164,8 @@ const programmingProjects = [
     type: "Web development",
     icon: "fa-solid fa-window-restore",
     desc:
-      "A responsive single-page portfolio for notes, research, teaching work, " +
-      "and CV materials, built for GitHub Pages with vanilla JavaScript.",
+      "A responsive single-page portfolio for data science projects, research, " +
+      "mathematical notes, and CV materials, built for GitHub Pages with vanilla JavaScript.",
     tags: ["JavaScript", "CSS", "GitHub Pages"],
     href: "https://github.com/Shaotian-Sun/shaotian-sun.github.io",
     cta: "View source",
@@ -337,9 +252,9 @@ function layout({ contentHtml }) {
       </a>
 
       <nav class="nav" aria-label="Primary navigation">
-        ${navLink("home", "fa-solid fa-house", "Home", route)}
-        ${navLink("notes", "fa-solid fa-book", "Notes", route)}
+        ${navLink("home", "fa-solid fa-database", "Data", route)}
         ${navLink("research", "fa-solid fa-flask", "Research", route)}
+        ${navLink("notes", "fa-solid fa-book", "Notes", route)}
         ${navLink("cv", "fa-solid fa-file-lines", "CV", route)}
       </nav>
 
@@ -661,20 +576,20 @@ function renderHome() {
             </div>
           </div>
           <p>
-            This website collects my math notes, research and reading materials,
-            and a growing data portfolio. I am preparing for data scientist
+            This website foregrounds my data science portfolio, followed by
+            research projects and mathematical notes. I am preparing for data scientist
             internship roles while continuing research toward Fall 2027 Ph.D.
             applications.
           </p>
           <div class="cta-row">
-            <a class="button primary" href="#/research">
+            <a class="button primary" href="#/home" data-scroll-target="data-projects">
+              <i class="fa-solid fa-database"></i><span>View data projects</span>
+            </a>
+            <a class="button" href="#/research">
               <i class="fa-solid fa-arrow-right"></i><span>View research</span>
             </a>
             <a class="button" href="#/notes">
               <i class="fa-solid fa-book"></i><span>Browse notes</span>
-            </a>
-            <a class="button" href="#/home" data-scroll-target="data-projects">
-              <i class="fa-solid fa-code"></i><span>Projects</span>
             </a>
           </div>
         </article>
@@ -734,36 +649,31 @@ function renderHome() {
         </div>
       </section>
 
-      <section class="timeline-section reveal" aria-labelledby="experience-timeline-title">
-        <div class="section-heading">
-          <p class="eyebrow"><i class="fa-solid fa-timeline"></i> Timeline</p>
-          <h2 id="experience-timeline-title">Teaching and research experience</h2>
-        </div>
-
-        <div class="timeline-grid">
-          ${timelineColumn("Teaching Experience", "fa-solid fa-person-chalkboard", teachingTimeline)}
-          ${timelineColumn("Research Line", "fa-solid fa-flask", researchTimeline)}
-        </div>
-      </section>
-
       <section class="quick-stats reveal" aria-label="Website highlights">
         ${statCard("3", "Data portfolio slots ready for reports", "fa-solid fa-database")}
+        ${statCard("3", "Research and reading projects", "fa-solid fa-flask")}
         ${statCard("8", "Course note collections", "fa-solid fa-layer-group")}
-        ${statCard("8", "Teaching and support roles", "fa-solid fa-graduation-cap")}
       </section>
 
       <section class="feature-strip reveal">
-        <a href="#/research">
-          <i class="fa-solid fa-cube"></i>
+        <a href="#/home" data-scroll-target="data-projects">
+          <i class="fa-solid fa-database"></i>
           <span>
-            <strong>Internship focus</strong>
+            <strong>Data science portfolio</strong>
             <small>Data science projects, machine learning practice, and statistical modeling</small>
+          </span>
+        </a>
+        <a href="#/research">
+          <i class="fa-solid fa-flask"></i>
+          <span>
+            <strong>Research projects</strong>
+            <small>Reading reports, research software, and mathematical project writeups</small>
           </span>
         </a>
         <a href="#/notes">
           <i class="fa-solid fa-pen-nib"></i>
           <span>
-            <strong>Working archive</strong>
+            <strong>Mathematical notes</strong>
             <small>Course notes organized by term and subject</small>
           </span>
         </a>
@@ -809,30 +719,6 @@ function statCard(number, label, icon) {
       <strong>${number}</strong>
       <span>${label}</span>
     </article>
-  `;
-}
-
-function timelineColumn(title, icon, items) {
-  return `
-    <article class="timeline-column">
-      <h3><i class="${icon}"></i>${title}</h3>
-      <ol class="experience-timeline">
-        ${items.map(timelineItem).join("")}
-      </ol>
-    </article>
-  `;
-}
-
-function timelineItem({ term, role, place, icon }) {
-  return `
-    <li>
-      <span class="timeline-node"><i class="${icon}"></i></span>
-      <div class="timeline-copy">
-        <time>${term}</time>
-        <strong>${role}</strong>
-        <span>${place}</span>
-      </div>
-    </li>
   `;
 }
 
@@ -950,7 +836,7 @@ function renderCV() {
           <h2>Full academic CV</h2>
           <p>
             A complete academic curriculum vitae including education, coursework,
-            research, and teaching experience.
+            research, and selected experience.
           </p>
         </div>
 

@@ -4,7 +4,7 @@ This repository hosts my personal academic website on GitHub Pages:
 
 https://shaotian-sun.github.io
 
-The site is a static, vanilla JavaScript single-page app for my mathematical notes, research and reading materials, programming projects, teaching timeline, and CV.
+The site is a static, vanilla JavaScript single-page app for my data science projects, research and reading materials, mathematical notes, and CV.
 
 ## Structure
 
@@ -17,9 +17,9 @@ The site is a static, vanilla JavaScript single-page app for my mathematical not
 
 ## Routes
 
-- `#/home` - homepage, contact links, programming projects, and teaching/research timeline.
-- `#/notes` - course notes organized by term and filterable by subject.
+- `#/home` - homepage, contact links, and data science projects.
 - `#/research` - research and reading projects with local reports and notes.
+- `#/notes` - course notes organized by term and filterable by subject.
 - `#/cv` - link to the full academic CV.
 
 ## Local Preview
@@ -38,4 +38,4 @@ Then visit `http://localhost:8000`.
 - Updated homepage on August 3, 2025.
 - Uploaded notes and linked courses to personal or public course notes on December 17, 2025.
 - Split the site into Notes, CV, and Research/Reading sections on December 17, 2025.
-- Rebuilt the site as a hash-routed single-page GitHub Pages app with responsive styling, filters, theme toggle, research assets, project cards, and teaching/research timelines on May 1, 2026.
+- Rebuilt the site as a hash-routed single-page GitHub Pages app with responsive styling, filters, theme toggle, research assets, and project cards on May 1, 2026.
