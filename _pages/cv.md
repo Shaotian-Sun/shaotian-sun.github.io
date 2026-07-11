@@ -9,40 +9,30 @@ redirect_from:
 
 {% include base_path %}
 
-Education
-======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+# Education
 
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+- B.S. in Honors Math, University of Michigan, December 2026 (expected)
+- B.Eng. in Electrical and Computer Engineering, Shanghai Jiao Tong University, August 2027 (expected)
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+# Research experiences
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+- Summer 2026 - Current: **Research Assistant**
+  - University of Michigan
+  - Study the consistency of a pair-wise comparison model named _Blade-Chest-Inner Model_
+  - Supervisor: Prof. Gongjun Xu
 
-Publications
-======
+- Summer 2026 - Current: **Umich REU Researcher**
+  - University of Michigan
+  - Study the conditional behavior of a random maximization problem called _Exponential Directed Last Passage Percolation_
+  - Supervisor: Prof. Jinho Baik
+
+- Fall 2025 - Winter 2026: **Lab of Geometry Undergraduate Researcher**
+  - University of Michigan
+  - Designed and implemented a Python package as the computing tools for the combinarial object _Translational-Invariant Total Order_
+  - Supervisor: Dr. Grant Barkley
+
+# Publications
+
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
@@ -61,4 +51,6 @@ Teaching
   
 Service and leadership
 ======
-* Currently signed in to 43 different slack teams
+* *Community Assistant* for Umich Math Corps (Summer 2025)
+* *Student Advisor* for SJTU Global College Advising Center (Summer 2023 - Summer 2026)
+* *Leader* for SJTU Global College Interview Group (Fall 2023 - Summer 2024)
