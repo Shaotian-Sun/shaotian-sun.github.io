@@ -112,10 +112,3 @@ Unfortunately, one logistical issue with a template theme like Academic Pages th
 [![GitHub forks](https://img.shields.io/github/forks/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/fork)
 
 </div>
-
-# Test
-
-## Curly bracket
-
-&#123; b ∈ I ∣ a ≺ b ≺ c &#125;
-$`\lbrace b \in I \mid a \prec b \prec c \rbrace`$
