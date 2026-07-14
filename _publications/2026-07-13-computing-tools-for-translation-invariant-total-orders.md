@@ -11,5 +11,6 @@ citation: "Yifan Jing, Emma Yicheng Lou, Shaotian Sun, and Yuxuan Wu. (2026). &q
 ---
 
 <a href="https://arxiv.org/abs/2607.11709">Access preprint here</a>
+<a href="https://github.com/emmaycl/TITO_Explore_package">Access the Source Code here</a>
 
 We introduce TITO_Explore, a software package for representing and computing with Translation-Invariant Total Orders (TITOs). The package normalizes window notation into canonical form, computes inversion sets, compares weak order between TITOs, and computes joins of specified TITOs.
