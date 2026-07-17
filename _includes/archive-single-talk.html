@@ -37,8 +37,18 @@
       <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
     {% if post.date %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.date | date: '%B %d, %Y' }}</p>{% endif %}
-    {% if post.time %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.time }}</p>{% endif %}
-    {% if post.venue %}<p class="archive__item-excerpt" itemprop="description">{{ post.type }}, {{ post.venue }}{% if post.location %}, {{ post.location }}{% endif %}</p>{% endif %}
+    {% if post.time and post.venue_years == nil %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.time }}</p>{% endif %}
+    {% if post.venue %}
+      <p class="archive__item-excerpt" itemprop="description">
+        {% if post.venue_years %}
+          {% assign venues = post.venue | split: "; " %}
+          {% assign venue_years = post.venue_years | split: "; " %}
+          {% for venue in venues %}{% unless forloop.first %}<br>{% endunless %}{{ post.type }}, {{ venue_years[forloop.index0] }} — {{ venue }}{% if post.location %}, {{ post.location }}{% endif %}{% endfor %}
+        {% else %}
+          {{ post.type }}, {{ post.venue }}{% if post.location %}, {{ post.location }}{% endif %}
+        {% endif %}
+      </p>
+    {% endif %}
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>{% endif %}
   </article>
 </div>

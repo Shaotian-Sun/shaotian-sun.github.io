@@ -36,8 +36,18 @@ layout: default
         {% elsif page.date %}
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Date:</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></p>
         {% endif %}
-        {% if page.time %}<p class="page__date"><strong><i class="fa fa-fw fa-clock" aria-hidden="true"></i>Time:</strong> {{ page.time }}</p>{% endif %}
-        {% if page.venue %}<p>{{ page.talk_type }} at {{ page.venue }}{% if page.location %}, {{ page.location }}{% endif %}</p>{% endif %}
+        {% if page.time and page.venue_years == nil %}<p class="page__date"><strong><i class="fa fa-fw fa-clock" aria-hidden="true"></i>Time:</strong> {{ page.time }}</p>{% endif %}
+        {% if page.venue %}
+          <p>
+            {% if page.venue_years %}
+              {% assign venues = page.venue | split: "; " %}
+              {% assign venue_years = page.venue_years | split: "; " %}
+              {% for venue in venues %}{% unless forloop.first %}<br>{% endunless %}{{ page.talk_type }}, {{ venue_years[forloop.index0] }} — {{ venue }}{% if page.location %}, {{ page.location }}{% endif %}{% endfor %}
+            {% else %}
+              {{ page.talk_type }} at {{ page.venue }}{% if page.location %}, {{ page.location }}{% endif %}
+            {% endif %}
+          </p>
+        {% endif %}
 
         </header>
       {% endunless %}

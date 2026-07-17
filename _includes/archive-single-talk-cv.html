@@ -35,8 +35,18 @@
     </h3>
     {% if post.with %}<p class="page__meta">with {{ post.with }}</p>{% endif %}
     {% if post.date %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.date | date: '%B %d, %Y' }}</p>{% endif %}
-    {% if post.time %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.time }}</p>{% endif %}
-    {% if post.venue%}<p class="archive__item-excerpt" itemprop="description">{{post.type}} at {{ post.venue }},  {{post.location}}</p>{% endif %}
+    {% if post.time and post.venue_years == nil %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.time }}</p>{% endif %}
+    {% if post.venue %}
+      <p class="archive__item-excerpt" itemprop="description">
+        {% if post.venue_years %}
+          {% assign venues = post.venue | split: "; " %}
+          {% assign venue_years = post.venue_years | split: "; " %}
+          {% for venue in venues %}{% unless forloop.first %}<br>{% endunless %}{{ post.type }}, {{ venue_years[forloop.index0] }} — {{ venue }}{% if post.location %}, {{ post.location }}{% endif %}{% endfor %}
+        {% else %}
+          {{ post.type }} at {{ post.venue }}{% if post.location %}, {{ post.location }}{% endif %}
+        {% endif %}
+      </p>
+    {% endif %}
     </li>
   </article>
 </div>
