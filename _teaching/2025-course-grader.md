@@ -1,14 +1,11 @@
 ---
-title: "Course Grader"
+title: "Grader"
 collection: teaching
-type: "Course Grader"
+type: "Grader"
 venue: "University of Michigan, Ann Arbor"
-location: "Ann Arbor, MI"
-date: 2025-01-01
-date_range: "January 2025–December 2025"
 courses:
-  - "MATH 525: Graduate Probability Theory"
-  - "MATH 217: Linear Algebra"
+  - "FA 2025: MATH 525, Graduate Probability Theory"
+  - "WN 2025: MATH 217, Linear Algebra"
 ---
 
 - **MATH 525:** Graduate Probability Theory
