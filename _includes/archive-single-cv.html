@@ -36,7 +36,22 @@
     {% if post.read_time %}
       <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
-    {% if post.venue%}<p class="archive__item-excerpt" itemprop="description">{{ post.citation }}</p> {% endif %}
+    {% if post.collection == 'teaching' %}
+      <p class="archive__item-excerpt" itemprop="description">
+        <i>{{ post.venue }}</i>
+        {% if post.location %} — {{ post.location }}{% endif %}
+        <br>{{ post.date_range | default: post.date | date: "%Y" }}
+      </p>
+      {% if post.courses %}
+      <ul class="archive__item-excerpt">
+        {% for course in post.courses %}
+        <li>{{ course }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    {% elsif post.venue %}
+      <p class="archive__item-excerpt" itemprop="description">{{ post.citation }}</p>
+    {% endif %}
     </li>
  </article>
 </div>

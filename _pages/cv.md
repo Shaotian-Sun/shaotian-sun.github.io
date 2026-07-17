@@ -28,7 +28,7 @@ redirect_from:
 
 - Fall 2025 - Winter 2026: **Lab of Geometry Undergraduate Researcher**
   - University of Michigan
-  - Designed and implemented a Python package as the computing tools for the combinarial object _Translational-Invariant Total Order_
+  - Designed and implemented a Python package as the computing tools for the combinarial object _Translational-Invariant Total Order_ using directed edge-weighted graphs
   - Supervisor: Dr. Grant Barkley
 
 # Publications
