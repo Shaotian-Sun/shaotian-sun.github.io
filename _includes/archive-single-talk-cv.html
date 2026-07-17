@@ -41,7 +41,8 @@
         {% if post.venue_years %}
           {% assign venues = post.venue | split: "; " %}
           {% assign venue_years = post.venue_years | split: "; " %}
-          {% for venue in venues %}{% unless forloop.first %}<br>{% endunless %}{{ post.type }}, {{ venue_years[forloop.index0] }} — {{ venue }}{% if post.location %}, {{ post.location }}{% endif %}{% endfor %}
+          {% assign locations = post.location | split: "; " %}
+          {% for venue in venues %}{% unless forloop.first %}<br>{% endunless %}{{ post.type }}, {{ venue_years[forloop.index0] }} — {{ venue }}{% if post.location %}, {% if locations.size == venues.size %}{{ locations[forloop.index0] }}{% else %}{{ post.location }}{% endif %}{% endif %}{% endfor %}
         {% else %}
           {{ post.type }} at {{ post.venue }}{% if post.location %}, {{ post.location }}{% endif %}
         {% endif %}
