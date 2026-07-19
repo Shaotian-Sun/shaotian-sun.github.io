@@ -5,7 +5,7 @@ type: "Presentation"
 talk_type: "Presentation"
 with: "Chi Dinh, Yifan Jing, Emma Yicheng Lou, and Yuxuan Owen Wu"
 time: "2025"
-venue: "LOG(M) Midterm Presentation"
+venue: "Lab of Geometry Midterm Presentation"
 location: "Ann Arbor, MI"
 permalink: /talks/algorithmic-construction-of-weak-orders-between-titos/
 link: /files/talks/algorithmic-construction-of-weak-orders-between-titos.pdf
