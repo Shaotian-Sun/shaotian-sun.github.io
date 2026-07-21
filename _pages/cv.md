@@ -9,6 +9,8 @@ redirect_from:
 
 {% include base_path %}
 
+**CV:** [View or download my CV (PDF)]({{ '/files/cv.pdf' | relative_url }})
+
 # Education
 
 - B.S. in Honors Math, University of Michigan, December 2026 (expected)

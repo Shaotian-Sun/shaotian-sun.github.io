@@ -321,4 +321,10 @@
       text-decoration: underline;
     }
   }
+
+  // Institution icons sit outside their links, so keep the linked name on
+  // the same line as the icon.
+  .author__desktop > a {
+    display: inline;
+  }
 }
