@@ -30,6 +30,9 @@ author:
   bio: "Honors Math @ Umich + ECE @ SJTU"
   location: "Ann Arbor, Michigan"
   employer: "University of Michigan"
+  employer_url: "https://umich.edu/"
+  secondary_employer: "Shanghai Jiao Tong University"
+  secondary_employer_url: "https://www.sjtu.edu.cn/"
   uri: # URL
   email: "shaotian@umich.edu"
   cv: "/files/cv.pdf"
@@ -58,7 +61,7 @@ author:
 
   # Social media
   artstation: # Username
-  bluesky: "bsky.app" # Replace this with you Bluesky username
+  bluesky: # Username
   facebook: # Username
   flickr: # Username
   foursquare: # Username

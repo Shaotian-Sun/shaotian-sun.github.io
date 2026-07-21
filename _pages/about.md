@@ -9,7 +9,7 @@ redirect_from:
 
 **CV:** [View or download my CV (PDF)]({{ '/files/cv.pdf' | relative_url }})
 
-I am an undergraduate student in **Honors Mathematics at the University of Michigan**, with additional training in statistics, computer science, and engineering. I expect to graduate in December 2026.
+I am pursuing dual bachelor's degrees: a **B.S. in Honors Mathematics at the University of Michigan** and a **B.Eng. in Electrical and Computer Engineering at Shanghai Jiao Tong University**.
 
 My research interests lie broadly in **probability, statistics, optimization, and machine learning**. I am particularly interested in problems where probabilistic structure, asymptotic analysis, and statistical methodology interact.
 
@@ -21,7 +21,6 @@ My current research interests include:
 - Interacting particle systems
 - High-dimensional statistics
 - Latent-variable and pairwise comparison models
-- Sequential inference
 - Machine learning
 
 ## Current Research
