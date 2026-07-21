@@ -51,7 +51,8 @@ My coursework includes graduate-level and advanced study in:
 
 ### Shanghai Jiao Tong University
 
-I have also studied electrical and computer engineering at **Shanghai Jiao Tong University**.
+**B.Eng. in Electrical and Computer Engineering**
+Expected August 2027
 
 ## Research and Professional Goals
 
