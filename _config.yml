@@ -32,6 +32,7 @@ author:
   employer: "University of Michigan"
   uri: # URL
   email: "shaotian@umich.edu"
+  cv: "/files/cv.pdf"
 
   # Academic websites
   academia: # URL
@@ -39,7 +40,7 @@ author:
   googlescholar: # URL
   inspire-hep: # URL
   impactstory: # URL
-  orcid: # URL
+  orcid: "https://orcid.org/0009-0001-5399-4067"
   semantic: # URL
   ssrn: # URL
   pubmed: # URL

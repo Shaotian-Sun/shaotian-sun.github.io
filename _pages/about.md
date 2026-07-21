@@ -7,6 +7,8 @@ redirect_from:
   - /about.html
 ---
 
+**CV:** [View or download my CV (PDF)]({{ '/files/cv.pdf' | relative_url }})
+
 I am an undergraduate student in **Honors Mathematics at the University of Michigan**, with additional training in statistics, computer science, and engineering. I expect to graduate in December 2026.
 
 My research interests lie broadly in **probability, statistics, optimization, and machine learning**. I am particularly interested in problems where probabilistic structure, asymptotic analysis, and statistical methodology interact.
