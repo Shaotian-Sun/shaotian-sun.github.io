@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-**CV:** [View or download my CV (PDF)]({{ '/files/cv.pdf' | relative_url }})
+[View or download my CV (PDF)]({{ '/files/cv.pdf' | relative_url }})
 
 # Education
 
