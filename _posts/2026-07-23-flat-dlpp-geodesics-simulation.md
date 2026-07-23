@@ -28,7 +28,7 @@ $$
 **Markov Chain Monte Carlo Method** was used for this simulation. The function that we are considering is
 
 $$
-\widetilde{{\mathcal{L}}^{\mathrm{flat}}}(x,y) := \frac{\mathcal{L}^{\mathrm{flat}}(xN,yN)}{N}.
+\widetilde{\mathcal{L}^{\mathrm{flat}}}(x,y) := \frac{\mathcal{L}^{\mathrm{flat}}(xN,yN)}{N}.
 $$
 
 Choose an endpoint by clicking either panel, or enter its coordinates and
