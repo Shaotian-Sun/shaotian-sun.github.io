@@ -28,10 +28,12 @@ $$
 **Markov Chain Monte Carlo Method** was used for this simulation. The function that we are considering is
 
 $$
-\widetilde{\mathcal{L}^{\mathrm{flat}}}(x,y) := \frac{\mathcal{L}^{\mathrm{flat}}(xN,yN)}{N}.
+\bar{\mathcal{L}^{\mathrm{flat}}}(x,y) := \lim_{N \to \infty}\frac{\mathcal{L}^{\mathrm{flat}}(xN,yN)}{N}.
 $$
 
-Choose an endpoint by clicking either panel, or enter its coordinates and
+For our simulation, we choose large \\(N\\) as \\(400\\).
+
+Here are two simulations! Choose an endpoint by clicking either panel, or enter its coordinates and
 select **Simulate geodesics**. Each panel overlays 20 independent extensions
 of a conditioned environment. The first shows the full domain
 \\([-10,10]^2\\); the second gives a closer view on \\([-5,5]^2\\).
