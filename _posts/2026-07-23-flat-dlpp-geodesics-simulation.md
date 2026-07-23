@@ -1,8 +1,8 @@
 ---
 layout: single
-title: "Interactive Geodesics Simulation for Flat Exponential DLPP"
+title: "Simulation"
 date: 2026-07-23
-excerpt: "An interactive simulation of exponential directed last-passage percolation with flat initial condition under an upper large-deviation event."
+excerpt: "Conditioned limit shapes and an interactive geodesic simulation for exponential directed last-passage percolation."
 categories:
   - probability
 tags:
@@ -16,27 +16,98 @@ share: true
 related: true
 ---
 
-This interactive figure shows geodesics in exponential directed
-last-passage percolation (DLPP) with the flat initial line \\(y=-x\\), conditioned
-on the upper large-deviation event
+{% include toc title="Contents" %}
+
+## Introduction
+
+Let \\(\{w_{i,j}\}\\) be independent exponential random variables with mean
+one. For lattice points \\(u\preceq v\\), the last-passage time from \\(u\\) to
+\\(v\\) is
 
 $$
-\mathcal{L}^{\mathrm{flat}}(N,N) \geq \ell N,
+L(u,v)=\max_{\pi:u\to v}\sum_{z\in\pi}w_z,
+$$
+
+where the maximum is over all up-right lattice paths from \\(u\\) to \\(v\\).
+The two initial conditions considered here are
+
+$$
+\mathcal L^{\mathrm{step}}(m,n)=L((0,0),(m,n))
+$$
+
+and
+
+$$
+\mathcal L^{\mathrm{flat}}(m,n)
+=\max_{k\in\mathbb Z:\,(k,-k)\preceq(m,n)}
+L((k,-k),(m,n)).
+$$
+
+Thus, the step model starts from a single point, while the flat model starts
+from the line \\(y=-x\\).
+
+A **large-deviation event** is an event in which a random quantity differs
+from its typical macroscopic value by order \\(N\\), rather than by its usual
+smaller fluctuation scale. Here we condition on the upper large-deviation event
+
+$$
+\mathcal L(N,N)\geq \ell N,\qquad \ell=5.
+$$
+
+Since the typical value of both models at \\((N,N)\\) is asymptotic to
+\\(4N\\), the threshold \\(5N\\) represents an atypically large passage time.
+The conditioned samples below were generated using a Markov chain Monte Carlo
+method.
+
+## Conditioned limit shapes
+
+For either initial condition, consider the scaled macroscopic field
+
+$$
+\bar{\mathcal L}(x,y)
+:=\lim_{N\to\infty}\frac{\mathcal L(xN,yN)}{N}.
+$$
+
+The following plots show empirical level curves of this field under the
+conditioning \\(\mathcal L(N,N)\geq 5N\\), using \\(N=200\\). The first plot
+uses step initial data and the second uses flat initial data.
+
+<figure style="margin:1.5em 0;">
+  <img
+    src="{{ '/conditional_exponential_dlpp_N200_5Nx5N.png' | relative_url }}"
+    alt="Empirical level curves of the conditioned exponential DLPP field with step initial condition"
+    style="display:block;width:100%;height:auto;"
+  >
+  <figcaption style="text-align:center;font-size:0.9em;">
+    Step initial condition: empirical contours of the conditioned mean field.
+  </figcaption>
+</figure>
+
+<figure style="margin:1.5em 0;">
+  <img
+    src="{{ '/conditional_flat_exponential_dlpp_N200_5Nx5N.png' | relative_url }}"
+    alt="Empirical level curves of the conditioned exponential DLPP field with flat initial condition"
+    style="display:block;width:100%;height:auto;"
+  >
+  <figcaption style="text-align:center;font-size:0.9em;">
+    Flat initial condition: empirical contours of the conditioned mean field.
+  </figcaption>
+</figure>
+
+## Geodesic simulation for the flat case
+
+The interactive figure below shows geodesics in flat exponential DLPP,
+conditioned on
+
+$$
+\mathcal L^{\mathrm{flat}}(N,N)\geq \ell N,
 \qquad N=400,\quad \ell=5.
 $$
 
-**Markov Chain Monte Carlo Method** was used for this simulation. The function that we are considering is
-
-$$
-\bar{\mathcal{L}^{\mathrm{flat}}}(x,y) := \lim_{N \to \infty}\frac{\mathcal{L}^{\mathrm{flat}}(xN,yN)}{N}.
-$$
-
-For our simulation, we choose large \\(N\\) as \\(400\\).
-
-Here are two simulations! Choose an endpoint by clicking either panel, or enter its coordinates and
+Choose an endpoint by clicking either panel, or enter its coordinates and
 select **Simulate geodesics**. Each panel overlays 20 independent extensions
 of a conditioned environment. The first shows the full domain
-\\([-10,10]^2\\); the second gives a closer view on \\([-5,5]^2\\).
+\\([-10,10]^2\\), while the second gives a closer view on \\([-5,5]^2\\).
 
 <iframe
   src="{{ '/assets/interactive/flat-geodesics-n400/index.html' | relative_url }}"
