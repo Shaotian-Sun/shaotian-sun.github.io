@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>N=400 flat-DLPP geodesics</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="data.js?v=20-paths" defer></script>
+    <script src="viewer.js?v=panel-2-zoom-5" defer></script>
+  </head>
+  <body>
+    <main>
+      <div id="flat-geodesic-viewer">
+        <div class="viz-row fg-status" aria-live="polite">
+          <span
+            >Click on or above the flat boundary to choose an endpoint.</span
+          >
+          <strong class="fg-point">Endpoint: (10.00, 10.00)</strong>
+          <span>Each panel overlays 20 independent geodesic extensions.</span>
+        </div>
+        <form class="viz-controls fg-controls">
+          <label class="form-label" for="fg-x"
+            >x
+            <input
+              class="form-control"
+              id="fg-x"
+              name="x"
+              type="number"
+              min="-10"
+              max="10"
+              step="0.01"
+              value="10"
+            />
+          </label>
+          <label class="form-label" for="fg-y"
+            >y
+            <input
+              class="form-control"
+              id="fg-y"
+              name="y"
+              type="number"
+              min="-10"
+              max="10"
+              step="0.01"
+              value="10"
+            />
+          </label>
+          <button class="btn btn-primary" type="submit">
+            Simulate geodesics
+          </button>
+          <span class="fg-error text-destructive" role="alert"></span>
+        </form>
+        <div class="viz-row fg-legend fg-boundary-legend text-small" aria-label="Boundary legend">
+          <span><i class="fg-swatch fg-initial"></i>initial y = −x</span>
+          <span><i class="fg-swatch fg-segment"></i>conditioned segment</span>
+          <span><i class="fg-swatch fg-flat-rays"></i>origin rays M, 1/M</span>
+          <span><i class="fg-swatch fg-shifted-rays"></i>shifted rays m, 1/m</span>
+          <span><i class="fg-swatch fg-ellipse"></i>elliptic boundary</span>
+        </div>
+        <div class="fg-grid">
+          <section>
+            <h3>Simulation ensemble 1 (N=400, 20 paths)</h3>
+            <canvas
+              aria-label="N=400, simulation 1, flat boundary, and geodesic"
+            ></canvas>
+          </section>
+          <section>
+            <h3>Simulation ensemble 2 (N=400, 20 paths, zoom [−5, 5]²)</h3>
+            <canvas
+              aria-label="N=400, simulation 2, flat boundary, and geodesic"
+            ></canvas>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
