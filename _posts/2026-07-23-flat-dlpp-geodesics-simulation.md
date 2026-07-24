@@ -74,7 +74,7 @@ uses step initial data and the second uses flat initial data.
 
 <figure style="margin:1.5em 0;">
   <img
-    src="{{ '/conditional_exponential_dlpp_N200_5Nx5N.png' | relative_url }}"
+    src="{{ '/images/conditional_exponential_dlpp_N200_5Nx5N.png' | relative_url }}"
     alt="Empirical level curves of the conditioned exponential DLPP field with step initial condition"
     style="display:block;width:100%;height:auto;"
   >
@@ -85,7 +85,7 @@ uses step initial data and the second uses flat initial data.
 
 <figure style="margin:1.5em 0;">
   <img
-    src="{{ '/conditional_flat_exponential_dlpp_N200_5Nx5N.png' | relative_url }}"
+    src="{{ '/images/conditional_flat_exponential_dlpp_N200_5Nx5N.png' | relative_url }}"
     alt="Empirical level curves of the conditioned exponential DLPP field with flat initial condition"
     style="display:block;width:100%;height:auto;"
   >
