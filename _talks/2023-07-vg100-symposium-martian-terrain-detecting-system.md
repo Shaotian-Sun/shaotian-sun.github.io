@@ -5,8 +5,9 @@ type: "Poster and Presentation"
 talk_type: "Poster and Presentation"
 with: "Mohan Huang, Zixiang Lin, Jiaxing Song, and Zhaojiacheng Zhou"
 time: "2023"
-date: 2023-07-22
-venue: "VG100 Symposium"
+venue: "VG100 Symposium; 2023 Summer Design Expo"
+venue_years: "2023; 2023"
+location: "Shanghai, China"
 permalink: /talks/martian-terrain-detecting-system/
 link: /files/talks/martian-terrain-detecting-system-slides.pptx
 ---
