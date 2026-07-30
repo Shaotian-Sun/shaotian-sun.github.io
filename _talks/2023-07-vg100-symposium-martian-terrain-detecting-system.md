@@ -1,7 +1,7 @@
 ---
 title: "A Prototype of Martian Terrain Detecting System"
 collection: talks
-type: "Poster and Presentation"
+type: "Presentation"
 talk_type: "Poster and Presentation"
 with: "Mohan Huang, Zixiang Lin, Jiaxing Song, and Zhaojiacheng Zhou"
 time: "2023"
