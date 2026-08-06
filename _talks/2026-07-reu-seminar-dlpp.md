@@ -13,3 +13,4 @@ link: /files/talks/conditional-exponential-dlpp-with-flat-initial-condition.pdf
 ---
 
 [View presentation slides](/files/talks/conditional-exponential-dlpp-with-flat-initial-condition.pdf)
+[View seminar recording (starts from 38:29)](https://leccap.engin.umich.edu/leccap/player/r/4MtPgW)
