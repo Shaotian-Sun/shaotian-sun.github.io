@@ -32,7 +32,7 @@ I am working with **Professor Jinho Baik** on directed last-passage percolation 
 
 ### High-Dimensional Statistical Inference
 
-Under the guidance of **Professor Gongjun Xu**, I am studying identifiability, local strong convexity, consistency, and asymptotic inference for Blade-Chest-Inner Model, an inransitive pairwise comparison model.
+Under the guidance of **Professor Gongjun Xu**, I am studying identifiability, both average and uniform consistency, and asymptotic inference for Blade-Chest-Inner Model, an inransitive pairwise comparison model.
 
 ## Education
 
