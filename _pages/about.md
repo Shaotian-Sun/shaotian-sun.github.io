@@ -11,7 +11,7 @@ redirect_from:
 
 I am pursuing dual bachelor's degrees: a **B.S. in Honors Mathematics at the University of Michigan** and a **B.Eng. in Electrical and Computer Engineering at Shanghai Jiao Tong University**.
 
-My research interests lie broadly in **probability, statistics, optimization, and machine learning**. I am particularly interested in problems where probabilistic structure, asymptotic analysis, and statistical methodology interact.
+My research interests lie broadly in **probability, high-dimensional statistics, optimization, and machine learning**. I am particularly interested in problems where probabilistic structure, asymptotic analysis, and statistical methodology interact.
 
 ## Research Interests
 
@@ -21,7 +21,8 @@ My current research interests include:
 - Interacting particle systems
 - High-dimensional statistics
 - Latent-variable and pairwise comparison models
-- Machine learning
+- Nonconvex optimization
+- Matrix completion
 
 ## Current Research
 
@@ -56,9 +57,9 @@ Expected August 2027
 
 ## Research and Professional Goals
 
-I plan to pursue graduate study in probability, statistics, applied mathematics, or a closely related field. I am especially interested in research involving stochastic systems, high-dimensional inference, and mathematically grounded machine learning.
+I plan to pursue graduate study in probability, statistics, or a closely related field. I am especially interested in research involving probability, high-dimensional statistics, and mathematically grounded machine learning.
 
-I am also interested in applications of statistical learning to data science.
+I am also interested in applications of statistical learning to data science, such as matrix completion in recommender systems.
 
 ## Contact
 
