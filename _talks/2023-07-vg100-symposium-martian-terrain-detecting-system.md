@@ -12,5 +12,5 @@ permalink: /talks/martian-terrain-detecting-system/
 link: /files/talks/martian-terrain-detecting-system-slides.pptx
 ---
 
-[View poster](/files/talks/martian-terrain-detecting-system-poster.pdf)
+[View poster](/files/talks/martian-terrain-detecting-system-poster.pdf) \
 [View symposium slides](/files/talks/martian-terrain-detecting-system-slides.pptx)
