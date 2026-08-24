@@ -7,7 +7,9 @@ redirect_from:
   - /about.html
 ---
 
-Welcome to my homepage! I am Shaotian Sun, an undergraduate student currently pursuing dual bachelor's degrees: a **B.S. in Honors Mathematics at the University of Michigan** and a **B.Eng. in Electrical and Computer Engineering at Shanghai Jiao Tong University**. I'm actively applying for PhD programs starting in Fall 2027! Here's my current CV:
+Welcome to Shaotian's homepage!!!
+
+I am an undergraduate student currently pursuing dual bachelor's degrees: a **B.S. in Honors Mathematics at the University of Michigan** and a **B.Eng. in Electrical and Computer Engineering at Shanghai Jiao Tong University**. I'm actively applying for PhD programs starting in Fall 2027! Here's my current CV:
 
 **CV:** [View or download my CV (PDF)]({{ '/files/cv.pdf' | relative_url }})
 
