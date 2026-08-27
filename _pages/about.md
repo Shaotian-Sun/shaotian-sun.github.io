@@ -43,7 +43,7 @@ I am building an end-to-end recommendation retrieval system on the KuaiRand shor
 
 ## Misc
 
-In my spare time, I enjoy watching movies. My most reccent watched movie that is worth recommending: _欢迎来龙餐馆_ by _文牧野_.
+In my spare time, I enjoy watching movies. My most reccent watched movie that is worth recommending: _欢迎来龙餐馆_ directed by _文牧野_.
 
 When I used to be a Go player, I was Amateur 3-Dan. I'm more than happy to teach you how to play Go!
 
