@@ -9,6 +9,7 @@ published: true
 {% include base_path %}
 
 
-{% for post in site.portfolio %}
+{% assign portfolio_items = site.portfolio | sort: "stage_order" %}
+{% for post in portfolio_items %}
   {% include archive-single.html %}
 {% endfor %}
