@@ -29,6 +29,8 @@ My current research interests include:
 
 I am working with **Professor Jinho Baik** on directed last-passage percolation with Rishi. Our current work focuses on fluctuation behavior with step and flat initial conditions, and extensions to more general boundary geometries conditional on an upper large deviation event.
 
+**New preprint (with Rishi Dadlani):** [Conditional Flat Exponential Directed Last Passage Percolation under a One-Point Upper Large Deviation Event](https://arxiv.org/abs/2610.09018).
+
 ### High-Dimensional Statistical Inference
 
 Under the guidance of **Professor Gongjun Xu**, I am studying identifiability, both average and uniform consistency, and asymptotic inference for Blade-Chest-Inner Model, an inransitive pairwise comparison model.
